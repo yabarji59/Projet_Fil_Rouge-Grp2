@@ -29,11 +29,12 @@ public class ProgramController {
 
 
     /**
-	 * Permet de retourner la liste de tous les programmes
+	 * 
+       Allows you to return the list of all programs
 	 * 
 	 * Postman link : GET api/programs
 	 * 
-	 * @return liste des programs
+	 * @return list of  programs
 	 */
 
     @GetMapping({ "/programs" })
@@ -44,10 +45,10 @@ public class ProgramController {
 		return programService.findProgramByTitle(title);
 	}
 /**
-	 * Permet de retrouver un program par son id
+	 * Allows you to find a program by its id
 	 * 
 	 * @param id
-	 * @return programtDto
+	 * @return programDto
 	 */
     @GetMapping({ "/programs/{id}" })
 	public ProgramDto getById(@PathVariable Long id) {
@@ -55,9 +56,9 @@ public class ProgramController {
 		return programDto;
 	}
 /**
-	 * Permet de creer un nouveau program
+	 * Allows you to create a new program
 	 * 
-	 * @param post
+	 * @param programDto
 	 */
 	@PostMapping({ "/programs" })
 	public void save(@RequestBody ProgramDto programDto) {
@@ -66,10 +67,10 @@ public class ProgramController {
 	}
 
     /**
-	 * Permet de mettre à jour un Post
+	 * Allows you to update a Program
 	 * 
 	 * @param id
-	 * @param postDto
+	 * @param programtDto
 	 */
 	@PutMapping("/programs/{id}")
 	public void update(@PathVariable Long id, @RequestBody ProgramDto programDto) {
