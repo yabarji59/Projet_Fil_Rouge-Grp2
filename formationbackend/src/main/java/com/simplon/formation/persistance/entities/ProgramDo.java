@@ -1,5 +1,6 @@
 package com.simplon.formation.persistance.entities;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -14,7 +15,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="program")
-public class ProgramDo {
+public class ProgramDo  implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

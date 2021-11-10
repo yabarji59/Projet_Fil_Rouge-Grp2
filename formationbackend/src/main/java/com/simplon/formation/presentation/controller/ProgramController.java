@@ -82,4 +82,11 @@ public class ProgramController {
 		}
 
 	}
+	@RequestMapping("/test/welcome")
+    public String welcome(){
+
+        return "welcome to springboot";
+
+    }
+
 }
