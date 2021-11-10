@@ -1,7 +1,10 @@
 package com.simplon.formation.presentation.model;
 
 import java.util.Objects;
-
+/**
+ * 
+program object class
+ */
 public class ProgramDto {
 
     private Long ProgramId;

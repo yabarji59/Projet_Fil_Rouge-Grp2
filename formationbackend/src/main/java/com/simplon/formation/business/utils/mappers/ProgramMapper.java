@@ -7,7 +7,14 @@ import com.simplon.formation.persistance.entities.ProgramDo;
 import com.simplon.formation.presentation.model.ProgramDto;
 
 public class ProgramMapper {
-    
+
+
+      
+    /**
+     * map a programdo ---> ProgramDto
+     * @param programDo
+     * @return
+     */
     public ProgramDto mapToProgramDto(ProgramDo programDo) {
         ProgramDto programDto = new ProgramDto();
         if (programDo == null) {
@@ -20,7 +27,12 @@ public class ProgramMapper {
         return programDto;
     }
 
-
+ 
+ /**map a programDto ---> programdo
+  * 
+  * @param programDto
+  * @return
+  */
     public ProgramDo mapToProgramDo(final ProgramDto programDto) {
         final ProgramDo programDo= new ProgramDo();
         programDo.setProgramId(programDto.getProgramId());
@@ -28,6 +40,11 @@ public class ProgramMapper {
         programDo.setProgramDescription(programDto.getProgramDescription());
         return programDo;
     }
+
+    /**map a list of objets Do ---> list of objets Dto
+     * @param listProgramDo
+     * @return
+     */
     public List<ProgramDto> mapToListProgramsDto(final List<ProgramDo> listProgramDo) {
        List<ProgramDto> listProgramsDto = new ArrayList<>();
         for (ProgramDo programDo : listProgramDo) {

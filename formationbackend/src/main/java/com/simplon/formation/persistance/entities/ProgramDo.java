@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+/**
+ * class object programDo
+ */
 
 @Entity
 @Table(name="program")
