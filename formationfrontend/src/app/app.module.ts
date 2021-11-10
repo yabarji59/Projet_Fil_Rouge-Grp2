@@ -1,16 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/security/login/login.component';
-import { SessionComponent } from './components/session/session.component';
-import { ProgramComponent } from './components/program/program.component';
-import { ListComponent } from './components/session/list/list.component';
-import { DetailComponent } from './components/session/detail/detail.component';
-import { FormComponent } from './components/session/form/form.component';
 import { SessionListComponent } from './components/session/session-list/session-list.component';
-import { DetailListComponent } from './components/session/detail-list/detail-list.component';
-import { FormListComponent } from './components/session/form-list/form-list.component';
 import { ProgramListComponent } from './components/program/program-list/program-list.component';
 import { SessionDetailComponent } from './components/session/session-detail/session-detail.component';
 import { SessionFormComponent } from './components/session/session-form/session-form.component';
@@ -25,14 +17,7 @@ import { FormerFormComponent } from './components/former/former-form/former-form
   declarations: [
     AppComponent,
     LoginComponent,
-    SessionComponent,
-    ProgramComponent,
-    ListComponent,
-    DetailComponent,
-    FormComponent,
     SessionListComponent,
-    DetailListComponent,
-    FormListComponent,
     ProgramListComponent,
     SessionDetailComponent,
     SessionFormComponent,
