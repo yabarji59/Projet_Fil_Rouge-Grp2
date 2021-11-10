@@ -6,7 +6,7 @@ import { ProgramListComponent } from './components/program/program-list/program-
 import { SessionListComponent } from './components/session/session-list/session-list.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/welcome' },
+  
   { path: 'session', component: SessionListComponent },
   { path: 'session', pathMatch: 'full', redirectTo: '/session' },
   { path: 'formateur', component: FormerListComponent },
@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'apprenant', pathMatch: 'full', redirectTo: '/apprenant' },
   { path: 'programme', component: ProgramListComponent },
   { path: 'programme', pathMatch: 'full', redirectTo: '/programme' },
+  { path: '', pathMatch: 'full', redirectTo: '/welcome' },
   { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) }
 ];
 
