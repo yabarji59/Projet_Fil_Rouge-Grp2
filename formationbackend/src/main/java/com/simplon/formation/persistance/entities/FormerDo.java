@@ -16,47 +16,111 @@ public class FormerDo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="former_id")
-    private Long id;
+    private Long formerId;
 
     @Column(name="former_name")
-    private String name;
+    private String formerName;
 
     @Column(name="former_lastname")
-    private String lastName; 
+    private String formerLastname; 
 
     
-
-    public Long getId() {
-        return this.id;
+    /** 
+     * @return String
+     */
+    @Override
+    public String toString() {
+        return "{" +
+            " formerId='" + getFormerId() + "'" +
+            ", formerName='" + getFormerName() + "'" +
+            ", formerLastname='" + getFormerLastname() + "'" +
+            "}";
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    
+    /** 
+     * @param o
+     * @return boolean
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof FormerDo)) {
+            return false;
+        }
+        FormerDo formerDo = (FormerDo) o;
+        return Objects.equals(formerId, formerDo.formerId) && Objects.equals(formerName, formerDo.formerName) && Objects.equals(formerLastname, formerDo.formerLastname);
     }
 
-    public String getName() {
-        return this.name;
+    
+    /** 
+     * @return int
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(formerId, formerName, formerLastname);
     }
 
-    public void setName(String name) {
-        this.name = name;
+    
+    /** 
+     * @return Long
+     */
+    public Long getFormerId() {
+        return this.formerId;
     }
 
-    public String getLastName() {
-        return this.lastName;
+    
+    /** 
+     * @param formerId
+     */
+    public void setFormerId(Long formerId) {
+        this.formerId = formerId;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    
+    /** 
+     * @return String
+     */
+    public String getFormerName() {
+        return this.formerName;
+    }
+
+    
+    /** 
+     * @param formerName
+     */
+    public void setFormerName(String formerName) {
+        this.formerName = formerName;
+    }
+
+    
+    /** 
+     * @return String
+     */
+    public String getFormerLastname() {
+        return this.formerLastname;
+    }
+
+    
+    /** 
+     * @param formerLastname
+     */
+    public void setFormerLastname(String formerLastname) {
+        this.formerLastname = formerLastname;
+    }
+
+    public FormerDo(Long formerId, String formerName, String formerLastname) {
+        this.formerId = formerId;
+        this.formerName = formerName;
+        this.formerLastname = formerLastname;
     }
 
     public FormerDo() {
     }
 
-    public FormerDo(Long id, String name, String lastName) {
-        this.id = id;
-        this.name = name;
-        this.lastName = lastName;
-    }
-
 }
+
+    
+
+   
