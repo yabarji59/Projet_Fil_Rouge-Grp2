@@ -23,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
-
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 registerLocaleData(fr);
 
 @NgModule({
@@ -39,7 +40,7 @@ registerLocaleData(fr);
     LearnerListComponent,
     LearnerFormComponent,
     FormerListComponent,
-    FormerFormComponent
+    FormerFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,9 +50,11 @@ registerLocaleData(fr);
     BrowserAnimationsModule,
     IconsProviderModule,
     NzLayoutModule,
-    NzMenuModule
+    NzMenuModule,
+    NzCardModule,
+    NzAvatarModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: fr_FR }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

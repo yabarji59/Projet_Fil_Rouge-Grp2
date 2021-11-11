@@ -1,0 +1,9 @@
+.learner-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  row-gap: 2em;
+}
+
+nz-card {
+  box-shadow: 5px 10px 18px #888888;
+}
