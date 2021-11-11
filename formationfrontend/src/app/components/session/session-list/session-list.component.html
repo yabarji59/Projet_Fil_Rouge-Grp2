@@ -16,7 +16,9 @@
         <i nz-icon nzType="delete"></i>
     </ng-template>
     <ng-template #actionEdit>
-        <i nz-icon nzType="edit"></i>
+        <a routerLink="/session-edit/{{former?.id}}">
+            <i nz-icon nzType="edit"></i>
+        </a>
     </ng-template>
     <ng-template #actionEllipsis>
         <i nz-icon nzType="ellipsis"></i>

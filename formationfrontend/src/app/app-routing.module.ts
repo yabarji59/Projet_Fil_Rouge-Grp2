@@ -6,10 +6,13 @@ import { LearnerFormComponent } from './components/learner/learner-form/learner-
 import { LearnerListComponent } from './components/learner/learner-list/learner-list.component';
 import { ProgramFormComponent } from './components/program/program-form/program-form.component';
 import { ProgramListComponent } from './components/program/program-list/program-list.component';
+import { SessionFormComponent } from './components/session/session-form/session-form.component';
 import { SessionListComponent } from './components/session/session-list/session-list.component';
 
 const routes: Routes = [
   { path: 'session', component: SessionListComponent },
+  { path: 'session-edit', component: SessionFormComponent },
+  { path: 'session-edit/:id', component: SessionFormComponent },
   { path: 'former', component: FormerListComponent },
   { path: 'former-edit', component: FormerFormComponent },
   { path: 'former-edit/:id', component: FormerFormComponent },
