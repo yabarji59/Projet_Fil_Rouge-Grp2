@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 /**
  * class object programDo
@@ -15,9 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="program")
-public class ProgramDo  implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class ProgramDo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

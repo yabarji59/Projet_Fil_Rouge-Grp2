@@ -35,6 +35,9 @@ public class ProgramMapper {
   */
     public ProgramDo mapToProgramDo(final ProgramDto programDto) {
         final ProgramDo programDo= new ProgramDo();
+        if (programDto == null) {
+            return null;
+        }
         programDo.setProgramId(programDto.getProgramId());
         programDo.setProgramTitle(programDto.getProgramTitle());
         programDo.setProgramDescription(programDto.getProgramDescription());
