@@ -1,5 +1,5 @@
 <h1>Sessions</h1>
-<div class="learner-container">
+<div class="session-container">
     <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit,actionEllipsis]"
         *ngFor="let session of sessions">
         <nz-card-meta nzTitle="#{{session?.id }} {{session.name}}"
