@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
  * Interface Repository for Learner
  */
 @Repository
-public interface ILearnerDao extends JpaRepository<LearnerDo, String> {
+public interface ILearnerDao extends JpaRepository<LearnerDo, Long> {
 
     /**
      * To have the list of LearnerDo by title

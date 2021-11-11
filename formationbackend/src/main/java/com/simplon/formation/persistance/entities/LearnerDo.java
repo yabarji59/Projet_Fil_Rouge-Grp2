@@ -24,32 +24,32 @@ public class LearnerDo {
     private String learnerName;
 
     @Column(name="learner_firstname")
-    private String learnerFisrtname;
+    private String learnerFirstname;
 
     @ManyToOne
-    private SessionDo session;
+    private SessionDo learnerSession;
     
 
 
     public LearnerDo() {
     }
 
-    public LearnerDo(String learnerName, String learnerFisrtname) {
+    public LearnerDo(String learnerName, String learnerFirstname) {
         this.learnerName = learnerName;
-        this.learnerFisrtname = learnerFisrtname;
+        this.learnerFirstname = learnerFirstname;
     }
 
-    public LearnerDo(Long learnerId, String learnerName, String learnerFisrtname) {
+    public LearnerDo(Long learnerId, String learnerName, String learnerFirstname) {
         this.learnerId = learnerId;
         this.learnerName = learnerName;
-        this.learnerFisrtname = learnerFisrtname;
+        this.learnerFirstname = learnerFirstname;
     }
 
-    public LearnerDo(Long learnerId, String learnerName, String learnerFisrtname, SessionDo session) {
+    public LearnerDo(Long learnerId, String learnerName, String learnerFirstname, SessionDo learnerSession) {
         this.learnerId = learnerId;
         this.learnerName = learnerName;
-        this.learnerFisrtname = learnerFisrtname;
-        this.session = session;
+        this.learnerFirstname = learnerFirstname;
+        this.learnerSession = learnerSession;
     }
 
 
@@ -70,20 +70,20 @@ public class LearnerDo {
         this.learnerName = learnerName;
     }
 
-    public String getLearnerFisrtname() {
-        return this.learnerFisrtname;
+    public String getLearnerFirstname() {
+        return this.learnerFirstname;
     }
 
-    public void setLearnerFisrtname(String learnerFisrtname) {
-        this.learnerFisrtname = learnerFisrtname;
+    public void setLearnerFirstname(String learnerFirstname) {
+        this.learnerFirstname = learnerFirstname;
     }
 
-    public SessionDo getSession() {
-        return this.session;
+    public SessionDo getLearnerSession() {
+        return this.learnerSession;
     }
 
-    public void setSession(SessionDo session) {
-        this.session = session;
+    public void setLearnerSession(SessionDo learnerSession) {
+        this.learnerSession = learnerSession;
     }
 
 
@@ -92,8 +92,8 @@ public class LearnerDo {
         return "{" +
             " learnerId='" + getLearnerId() + "'" +
             ", learnerName='" + getLearnerName() + "'" +
-            ", learnerFisrtname='" + getLearnerFisrtname() + "'" +
-            ", session='" + getSession() + "'" +
+            ", learnerFirstname='" + getLearnerFirstname() + "'" +
+            ", session='" + getLearnerSession() + "'" +
             "}";
     }
 

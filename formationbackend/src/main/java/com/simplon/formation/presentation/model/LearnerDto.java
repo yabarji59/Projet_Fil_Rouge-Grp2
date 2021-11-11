@@ -7,7 +7,7 @@ public class LearnerDto {
     private Long learnerId;
     private String learnerName;
     private String learnerFirstname;
-    private SessionDto session;
+    private SessionDto learnerSession;
 
 
     public LearnerDto() {
@@ -24,11 +24,11 @@ public class LearnerDto {
         this.learnerFirstname = learnerFirstname;
     }
 
-    public LearnerDto(Long learnerId, String learnerName, String learnerFirstname, SessionDto session) {
+    public LearnerDto(Long learnerId, String learnerName, String learnerFirstname, SessionDto learnersession) {
         this.learnerId = learnerId;
         this.learnerName = learnerName;
         this.learnerFirstname = learnerFirstname;
-        this.session = session;
+        this.learnerSession = learnersession;
     }
     
     
@@ -57,12 +57,12 @@ public class LearnerDto {
         this.learnerFirstname = learnerFirstname;
     }
 
-    public SessionDto getSession() {
-        return this.session;
+    public SessionDto getLearnerSession() {
+        return this.learnerSession;
     }
 
-    public void setSession(SessionDto session) {
-        this.session = session;
+    public void setLearnerSession(SessionDto session) {
+        this.learnerSession = session;
     }
 
     
@@ -73,7 +73,7 @@ public class LearnerDto {
             " learnerId='" + getLearnerId() + "'" +
             ", learnerName='" + getLearnerName() + "'" +
             ", learnerFirstname='" + getLearnerFirstname() + "'" +
-            ", session='" + getSession() + "'" +
+            ", session='" + getLearnerSession() + "'" +
             "}";
     }
 
