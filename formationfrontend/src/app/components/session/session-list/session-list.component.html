@@ -16,11 +16,13 @@
         <i nz-icon nzType="delete"></i>
     </ng-template>
     <ng-template #actionEdit>
-        <a routerLink="/session-edit/{{former?.id}}">
+        <a routerLink="/session-edit/{{session?.id}}">
             <i nz-icon nzType="edit"></i>
         </a>
     </ng-template>
     <ng-template #actionEllipsis>
-        <i nz-icon nzType="ellipsis"></i>
+        <a routerLink="/session-detail/{{session?.id}}">
+            <i nz-icon nzType="ellipsis"></i>
+        </a>
     </ng-template>
 </div>

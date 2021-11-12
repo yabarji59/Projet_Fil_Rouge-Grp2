@@ -6,6 +6,8 @@ import { LearnerFormComponent } from './components/learner/learner-form/learner-
 import { LearnerListComponent } from './components/learner/learner-list/learner-list.component';
 import { ProgramFormComponent } from './components/program/program-form/program-form.component';
 import { ProgramListComponent } from './components/program/program-list/program-list.component';
+import { LoginComponent } from './components/security/login/login.component';
+import { SessionDetailComponent } from './components/session/session-detail/session-detail.component';
 import { SessionFormComponent } from './components/session/session-form/session-form.component';
 import { SessionListComponent } from './components/session/session-list/session-list.component';
 
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'session', component: SessionListComponent },
   { path: 'session-edit', component: SessionFormComponent },
   { path: 'session-edit/:id', component: SessionFormComponent },
+  { path: 'session-detail', component: SessionDetailComponent },
+  { path: 'session-edit/:id', component: SessionDetailComponent },
   { path: 'former', component: FormerListComponent },
   { path: 'former-edit', component: FormerFormComponent },
   { path: 'former-edit/:id', component: FormerFormComponent },
@@ -22,8 +26,9 @@ const routes: Routes = [
   { path: 'program', component: ProgramListComponent },
   { path: 'program-edit', component: ProgramFormComponent },
   { path: 'program-edit/:id', component: ProgramFormComponent },
-  { path: '', pathMatch: 'full', redirectTo: '/session' },
-  { path: '**', pathMatch: 'full', redirectTo: '/session' },
+  { path: 'login', component: LoginComponent },
+  { path: '', pathMatch: 'full', redirectTo: '/login' },
+  { path: '**', pathMatch: 'full', redirectTo: '/login' },
 ];
 
 @NgModule({

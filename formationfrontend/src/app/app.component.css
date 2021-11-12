@@ -20,17 +20,13 @@
   transition: all 0.3s, padding 0s;
 }
 
-.trigger:hover {
-  color: #1890ff;
-}
-
 .sidebar-logo {
   position: relative;
   height: 64px;
   padding-left: 24px;
   overflow: hidden;
   line-height: 64px;
-  background: #001529;
+  background: #222222;
   transition: all 0.3s;
 }
 
@@ -73,4 +69,56 @@ nz-content {
   padding: 24px;
   background: #fff;
   height: 100%;
+}
+
+:host ::ng-deep .ant-layout-sider {
+  background: #333333;
+}
+
+:host ::ng-deep .ant-menu {
+  background: #333333;
+}
+
+:host ::ng-deep .ant-menu-item a {
+  color: white !important;
+}
+
+:host ::ng-deep .ant-menu-submenu-selected {
+  color: white !important;
+}
+
+:host ::ng-deep .ant-menu-submenu-title:hover {
+  color: white !important;
+}
+
+:host ::ng-deep .ant-menu-submenu-arrow {
+  color: white !important;
+}
+
+:host ::ng-deep .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background: linear-gradient(90deg, #e22a6f 0%, #fe6666 100%), #222222;
+}
+
+:host ::ng-deep .ant-menu-inline .ant-menu-item::after {
+  border-right: 3px solid white !important;
+}
+
+:host ::ng-deep .ant-layout-header {
+  color: white !important;
+}
+
+:host ::ng-deep .app-header {
+  background: #333333;
+}
+
+:host ::ng-deep .trigger {
+  color: white !important;
+}
+
+:host ::ng-deep .inner-content {
+  background: #333333;
+}
+
+:host ::ng-deep .ant-layout {
+  background: #222222;
 }

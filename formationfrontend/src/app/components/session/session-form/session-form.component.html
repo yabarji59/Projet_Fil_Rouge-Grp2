@@ -1,1 +1,32 @@
-<p>session-form works!</p>
+<h1>Sessions</h1>
+<p>{{validateForm.value | json}}</p>
+<div class="session-form-container">
+    <form nz-form [formGroup]="validateForm" class="session-form" (ngSubmit)="submitForm()">
+        <nz-form-item>
+            <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un nom valide!">
+                <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="name" placeholder="Nom" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un nom valide!">
+                <nz-select formControlName="former">
+                    <nz-option nzValue="Yassen" nzLabel="Yassen"></nz-option>
+                    <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un nom valide!">
+                <nz-select formControlName="program">
+                    <nz-option nzValue="Java" nzLabel="Java"></nz-option>
+                    <nz-option nzValue="Angular" nzLabel="Angular"></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</div>
+<div class=" session-button-submit">
+    <button nz-button class="session-form-button session-form-margin" [nzType]="'primary'">Soumettre</button>
+</div>
