@@ -77,6 +77,7 @@ nz-content {
 
 :host ::ng-deep .ant-menu {
   background: #333333;
+  color: white;
 }
 
 :host ::ng-deep .ant-menu-item a {
@@ -121,4 +122,8 @@ nz-content {
 
 :host ::ng-deep .ant-layout {
   background: #222222;
+}
+
+:host ::ng-deep .ant-menu-submenu-active {
+  color: white !important;
 }
