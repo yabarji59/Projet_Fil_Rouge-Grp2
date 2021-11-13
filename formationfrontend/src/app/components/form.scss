@@ -1,0 +1,57 @@
+.gestion-formation-form {
+  width: 50%;
+}
+
+.gestion-formation-form-margin {
+  margin-bottom: 16px;
+}
+
+.gestion-formation-form-forgot {
+  float: right;
+}
+
+.gestion-formation-form-button {
+  width: 20%;
+}
+
+.gestion-formation-form-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+}
+.gestion-formation-button-submit {
+  display: flex;
+  justify-content: center;
+}
+
+:host ::ng-deep .ant-btn-primary {
+  background: linear-gradient(90deg, #e22a6f 0%, #fe6666 100%), #222222;
+  border-color: palevioletred;
+}
+
+:host ::ng-deep .ant-input-affix-wrapper {
+  background-color: #444444;
+  border: #444444;
+}
+:host ::ng-deep .ant-input,
+.ant-input-number {
+  background-color: #444444;
+  border: #444444;
+}
+
+:host
+  ::ng-deep
+  .ant-select:not(.ant-select-customize-input)
+  .ant-select-selector {
+  background-color: #444444;
+  border: #444444;
+}
+
+:host ::ng-deep .ant-select {
+  color: white;
+}
+
+:host ::ng-deep .ant-input,
+.ant-input-clear-icon:active {
+  color: white;
+}
