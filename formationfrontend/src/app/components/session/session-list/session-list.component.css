@@ -4,15 +4,3 @@
   justify-items: center;
   row-gap: 2em;
 }
-
-nz-card {
-  box-shadow: 2px 2px 3px #e42d6fab;
-}
-
-:host ::ng-deep .ant-card {
-  background: #727272;
-}
-
-:host ::ng-deep .ant-card-actions {
-  background: #727272;
-}
