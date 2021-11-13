@@ -1,17 +1,16 @@
 <h1>Sessions</h1>
-<p>{{validateForm.value | json}}</p>
 <div class="session-form-container">
     <form nz-form [formGroup]="validateForm" class="session-form" (ngSubmit)="submitForm()">
         <nz-form-item>
             <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un nom valide!">
-                <nz-input-group nzPrefixIcon="user">
+                <nz-input-group>
                     <input type="text" nz-input formControlName="name" placeholder="Nom" />
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
             <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un nom valide!">
-                <nz-select formControlName="former">
+                <nz-select formControlName="former" nzPlaceHolder="Formateurs">
                     <nz-option nzValue="Yassen" nzLabel="Yassen"></nz-option>
                     <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
                 </nz-select>
@@ -19,7 +18,7 @@
         </nz-form-item>
         <nz-form-item>
             <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un nom valide!">
-                <nz-select formControlName="program">
+                <nz-select formControlName="program" nzPlaceHolder="Programmes">
                     <nz-option nzValue="Java" nzLabel="Java"></nz-option>
                     <nz-option nzValue="Angular" nzLabel="Angular"></nz-option>
                 </nz-select>
