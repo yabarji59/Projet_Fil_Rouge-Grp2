@@ -27,8 +27,8 @@ const routes: Routes = [
   { path: 'program-edit', component: ProgramFormComponent },
   { path: 'program-edit/:id', component: ProgramFormComponent },
   { path: 'login', component: LoginComponent },
-  { path: '', pathMatch: 'full', redirectTo: '/login' },
-  { path: '**', pathMatch: 'full', redirectTo: '/login' },
+  { path: '', pathMatch: 'full', redirectTo: '/session' },
+  { path: '**', pathMatch: 'full', redirectTo: '/session' },
 ];
 
 @NgModule({
