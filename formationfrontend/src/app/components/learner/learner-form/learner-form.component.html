@@ -1,1 +1,32 @@
-<p>learner-form works!</p>
+<h1>Apprenants</h1>
+<div class="gestion-formation-form-container">
+    <form nz-form [formGroup]="validateForm" class="gestion-formation-form" (ngSubmit)="submitForm()">
+        <nz-form-item>
+            <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un nom valide!">
+                <nz-input-group>
+                    <input type="text" nz-input formControlName="surname" placeholder="Nom" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un Prénom valide!">
+                <nz-input-group>
+                    <input type="text" nz-input formControlName="name" placeholder="Prénom" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un nom valide!">
+                <nz-select formControlName="sessions" nzPlaceHolder="sessions">
+                    <nz-option nzValue="POEI Java" nzLabel="POEI Java"></nz-option>
+                    <nz-option nzValue="POEI Angular" nzLabel="POEI Angular"></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+
+    </form>
+</div>
+<div class=" gestion-formation-button-submit">
+    <button nz-button class="gestion-formation-form-button gestion-formation-form-margin"
+        [nzType]="'primary'">Soumettre</button>
+</div>
