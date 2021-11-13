@@ -28,7 +28,7 @@ export class SessionFormComponent implements OnInit {
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       name: [null, [Validators.required]],
-      former: ['null', [Validators.required]],
+      former: [null, [Validators.required]],
       program: [null, [Validators.required]],
     });
   }
