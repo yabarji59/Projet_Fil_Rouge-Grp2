@@ -6,14 +6,14 @@
 <div class="login-form-container">
     <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
         <nz-form-item>
-            <nz-form-control nzErrorTip="S'il vous plait entrer un nom valide !">
+            <nz-form-control nzErrorTip="S'il vous plaît entrer un nom valide !">
                 <nz-input-group nzPrefixIcon="user">
                     <input type="text" nz-input formControlName="userName" placeholder="Username" />
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-control nzErrorTip="S'il vous plait entrer un mot de passe valide !">
+            <nz-form-control nzErrorTip="S'il vous plaît entrer un mot de passe valide !">
                 <nz-input-group nzPrefixIcon="lock">
                     <input type="password" nz-input formControlName="password" placeholder="Password" />
                 </nz-input-group>
@@ -22,5 +22,5 @@
     </form>
 </div>
 <div class="login-button-submit">
-    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Connexion</button>
 </div>
