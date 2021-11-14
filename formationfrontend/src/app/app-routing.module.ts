@@ -1,26 +1,38 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FormerFormComponent } from './components/former/former-form/former-form.component';
 import { FormerListComponent } from './components/former/former-list/former-list.component';
+import { LearnerFormComponent } from './components/learner/learner-form/learner-form.component';
 import { LearnerListComponent } from './components/learner/learner-list/learner-list.component';
+import { ProgramFormComponent } from './components/program/program-form/program-form.component';
 import { ProgramListComponent } from './components/program/program-list/program-list.component';
+import { LoginComponent } from './components/security/login/login.component';
+import { SessionDetailComponent } from './components/session/session-detail/session-detail.component';
+import { SessionFormComponent } from './components/session/session-form/session-form.component';
 import { SessionListComponent } from './components/session/session-list/session-list.component';
 
 const routes: Routes = [
-  
   { path: 'session', component: SessionListComponent },
-  { path: 'session', pathMatch: 'full', redirectTo: '/session' },
-  { path: 'formateur', component: FormerListComponent },
-  { path: 'formateur', pathMatch: 'full', redirectTo: '/formateur' },
-  { path: 'apprenant', component: LearnerListComponent },
-  { path: 'apprenant', pathMatch: 'full', redirectTo: '/apprenant' },
-  { path: 'programme', component: ProgramListComponent },
-  { path: 'programme', pathMatch: 'full', redirectTo: '/programme' },
-  { path: '', pathMatch: 'full', redirectTo: '/welcome' },
-  { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) }
+  { path: 'session-edit', component: SessionFormComponent },
+  { path: 'session-edit/:id', component: SessionFormComponent },
+  { path: 'session-detail', component: SessionDetailComponent },
+  { path: 'session-edit/:id', component: SessionDetailComponent },
+  { path: 'former', component: FormerListComponent },
+  { path: 'former-edit', component: FormerFormComponent },
+  { path: 'former-edit/:id', component: FormerFormComponent },
+  { path: 'learner', component: LearnerListComponent },
+  { path: 'learner-edit', component: LearnerFormComponent },
+  { path: 'learner-edit/:id', component: LearnerFormComponent },
+  { path: 'program', component: ProgramListComponent },
+  { path: 'program-edit', component: ProgramFormComponent },
+  { path: 'program-edit/:id', component: ProgramFormComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '', pathMatch: 'full', redirectTo: '/login' },
+  { path: '**', pathMatch: 'full', redirectTo: '/login' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

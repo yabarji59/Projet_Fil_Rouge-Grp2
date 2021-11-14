@@ -1,5 +1,15 @@
 package com.simplon.formation.persistance.dao;
 
-public interface IFormerDao {
-    
+import java.util.List;
+import com.simplon.formation.persistance.entities.FormerDo;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface IFormerDao extends JpaRepository<FormerDo, Long>{
+    List<FormerDo> findAllByNameContaining(String name);
+    void deleteByName(String name);
+
 }
+    
+

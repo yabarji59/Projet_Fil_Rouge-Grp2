@@ -1,1 +1,25 @@
-<p>program-list works!</p>
+<h1>Programmes</h1>
+<div class="program-container">
+    <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit]"
+        *ngFor="let program of programs">
+        <nz-card-meta nzTitle="#{{program?.id }}{{program.program.title}}"
+            nzDescription="{{program.program.description}}" [nzAvatar]="avatarTemplate">
+        </nz-card-meta>
+    </nz-card>
+    <ng-template #avatarTemplate>
+        <nz-avatar nzIcon="user" style="background-color:#87d068;"></nz-avatar>
+    </ng-template>
+    <ng-template #coverTemplate>
+        <img alt="example" src="assets/img/java2.jpg" />
+    </ng-template>
+    <ng-template #actionDelete>
+        <i nz-icon nzType="delete"></i>
+    </ng-template>
+    <ng-template #actionEdit>
+        <a routerLink="/program-edit/{{program?.id}}">
+            <i nz-icon nzType="edit"></i>
+        </a>
+
+    </ng-template>
+
+</div>

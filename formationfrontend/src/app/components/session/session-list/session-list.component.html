@@ -1,1 +1,28 @@
-<p>session-list works!</p>
+<h1>Sessions</h1>
+<div class="session-container">
+    <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit,actionEllipsis]"
+        *ngFor="let session of sessions">
+        <nz-card-meta nzTitle="#{{session?.id }} {{session.name}}"
+            nzDescription=" {{session.former.name}} {{session.former.surname}}" [nzAvatar]="avatarTemplate">
+        </nz-card-meta>
+    </nz-card>
+    <ng-template #avatarTemplate>
+        <nz-avatar nzSrc="assets/img/iconSimplon.jpg"></nz-avatar>
+    </ng-template>
+    <ng-template #coverTemplate>
+        <img alt="example" src="assets/img/simplon.png" />
+    </ng-template>
+    <ng-template #actionDelete>
+        <i nz-icon nzType="delete"></i>
+    </ng-template>
+    <ng-template #actionEdit>
+        <a routerLink="/session-edit/{{session?.id}}">
+            <i nz-icon nzType="edit"></i>
+        </a>
+    </ng-template>
+    <ng-template #actionEllipsis>
+        <a routerLink="/session-detail/{{session?.id}}">
+            <i nz-icon nzType="ellipsis"></i>
+        </a>
+    </ng-template>
+</div>

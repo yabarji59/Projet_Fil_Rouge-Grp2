@@ -1,0 +1,6 @@
+.program-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25em, 1fr));
+  justify-items: center;
+  row-gap: 2em;
+}

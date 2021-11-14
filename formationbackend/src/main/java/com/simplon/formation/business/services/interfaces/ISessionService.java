@@ -1,8 +1,6 @@
 package com.simplon.formation.business.services.interfaces;
 
 import java.util.List;
-
-import com.simplon.formation.persistance.entities.LearnerDo;
 import com.simplon.formation.presentation.model.SessionDto;
 
 

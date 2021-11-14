@@ -1,1 +1,26 @@
-<p>learner-list works!</p>
+<h1>Apprenants</h1>
+
+<div class="learner-container">
+    <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit]"
+        *ngFor="let learner of learners">
+        <nz-card-meta nzTitle="#{{learner?.id }} {{learner.name}} {{learner.surname}}"
+            nzDescription="{{learner.session.name}}" [nzAvatar]="avatarTemplate">
+        </nz-card-meta>
+    </nz-card>
+    <ng-template #avatarTemplate>
+        <nz-avatar nzIcon="user" style="background-color:#87d068;"></nz-avatar>
+    </ng-template>
+    <ng-template #coverTemplate>
+        <img alt="example" src="assets/img/Apprenantes.jpg" />
+    </ng-template>
+    <ng-template #actionDelete>
+        <i nz-icon nzType="delete"></i>
+    </ng-template>
+    <ng-template #actionEdit>
+        <a routerLink="/learner-edit/{{learner?.id}}">
+            <i nz-icon nzType="edit"></i>
+        </a>
+
+    </ng-template>
+
+</div>
