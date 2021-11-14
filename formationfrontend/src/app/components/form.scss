@@ -1,5 +1,5 @@
 .gestion-formation-form {
-  width: 50%;
+  width: 100%;
 }
 
 .gestion-formation-form-margin {
@@ -17,11 +17,11 @@
 .gestion-formation-form-container {
   display: flex;
   justify-content: center;
-  margin-top: 150px;
+  margin-top: 2em;
 }
 .gestion-formation-button-submit {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 :host ::ng-deep .ant-btn-primary {
