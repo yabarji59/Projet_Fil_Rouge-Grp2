@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ProgramFormComponent implements OnInit {
   validateForm!: FormGroup;
+  inputValue?: string;
 
   submitForm(): void {
     console.log('submit', this.validateForm);
@@ -28,7 +29,7 @@ export class ProgramFormComponent implements OnInit {
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       surname: [null, [Validators.required]],
-      name: [null, [Validators.required]],
+      inputValue: [null, [Validators.required]],
     });
   }
 }
