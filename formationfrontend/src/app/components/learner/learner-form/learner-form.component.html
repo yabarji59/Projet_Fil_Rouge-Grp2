@@ -1,6 +1,6 @@
 <h1>Apprenants</h1>
 <div class="gestion-formation-form-container">
-    <form nz-form [formGroup]="validateForm" class="gestion-formation-form" (ngSubmit)="submitForm()">
+    <form nz-form [formGroup]="validateForm" class="gestion-formation-form">
         <nz-form-item>
             <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un nom valide!">
                 <nz-input-group>
@@ -27,6 +27,6 @@
     </form>
 </div>
 <div class=" gestion-formation-button-submit">
-    <button nz-button class="gestion-formation-form-button gestion-formation-form-margin"
-        [nzType]="'primary'">Soumettre</button>
+    <button nz-button class="gestion-formation-form-button gestion-formation-form-margin" [nzType]="'primary'"
+        (click)="submitForm()">Soumettre</button>
 </div>
