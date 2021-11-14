@@ -33,10 +33,21 @@ public class FormerServiceImpl  implements IFormerService{
 
 
      @Override
-    public List <FormerDto> findFormerByName(String formerName) {
-        List<FormerDto> allFormers = new ArrayList<FormerDto>();
-        allFormers = mapper.mapToListFormersDto(formerDao.findAllByNameContaining(formerName));
-        return allFormers;
+    public FormerDto findFormerByName(String formerName) {
+        FormerDto formerDtoName = new FormerDto();
+        Optional<FormerDo> formerDo = formerDao.findByName(formerName);
+        if(formerDo.isPresent()){
+            FormerDo former = new FormerDo();
+            former = formerDo.get();
+            formerDtoName = mapper.mapToFormerDto(former);
+            return formerDtoName;
+        }
+        throw new RuntimeException("that object does not exist");
+        
+
+        
+        
+       
     }
     @Override
     public FormerDto findFormerById(Long formerId) {
@@ -61,7 +72,13 @@ public class FormerServiceImpl  implements IFormerService{
     }
 
     @Override
-    public void updateFormer(Long id, FormerDto formerDto) {
+    public void updateFormer(String formerName, FormerDto formerDto) {
+        
+            FormerDo formerDo = formerDao.findByName(formerName).get();
+            formerDo.setFormerName(formerDto.getFormerName());
+            formerDo.setFormerLastname(formerDto.getFormerLastname());
+            formerDao.save(formerDo);
+             }
         
     }
 

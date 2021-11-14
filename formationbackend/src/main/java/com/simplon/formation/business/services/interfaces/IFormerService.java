@@ -9,11 +9,11 @@ public interface IFormerService {
 
     FormerDto findFormerById(Long formerId);
 
-   List <FormerDto> findFormerByName(String formerName);
+   FormerDto findFormerByName(String formerName);
 
     void createFormer(FormerDto formerDto);
 
-    void updateFormer(Long formerId, FormerDto formerDto);
+    void updateFormer(String formerName, FormerDto formerDto);
 
     void deleteFormer(String formerName);
 }
