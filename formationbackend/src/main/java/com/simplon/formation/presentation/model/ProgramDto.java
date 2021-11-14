@@ -10,15 +10,18 @@ public class ProgramDto {
     private Long ProgramId;
     private String ProgramTitle;
     private String ProgramDescription;
+    private SessionDto programSession;
+
 
 
     public ProgramDto() {
     }
 
-    public ProgramDto(Long ProgramId, String ProgramTitle, String ProgramDescription) {
+    public ProgramDto(Long ProgramId, String ProgramTitle, String ProgramDescription, SessionDto programSession) {
         this.ProgramId = ProgramId;
         this.ProgramTitle = ProgramTitle;
         this.ProgramDescription = ProgramDescription;
+        this.programSession = programSession;
     }
 
     public Long getProgramId() {
@@ -45,6 +48,14 @@ public class ProgramDto {
         this.ProgramDescription = ProgramDescription;
     }
 
+    public SessionDto getProgramSession() {
+        return this.programSession;
+    }
+
+    public void setProgramSession(SessionDto programSession) {
+        this.programSession = programSession;
+    }
+
     public ProgramDto ProgramId(Long ProgramId) {
         setProgramId(ProgramId);
         return this;
@@ -60,6 +71,11 @@ public class ProgramDto {
         return this;
     }
 
+    public ProgramDto programSession(SessionDto programSession) {
+        setProgramSession(programSession);
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -68,12 +84,12 @@ public class ProgramDto {
             return false;
         }
         ProgramDto programDto = (ProgramDto) o;
-        return Objects.equals(ProgramId, programDto.ProgramId) && Objects.equals(ProgramTitle, programDto.ProgramTitle) && Objects.equals(ProgramDescription, programDto.ProgramDescription);
+        return Objects.equals(ProgramId, programDto.ProgramId) && Objects.equals(ProgramTitle, programDto.ProgramTitle) && Objects.equals(ProgramDescription, programDto.ProgramDescription) && Objects.equals(programSession, programDto.programSession);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ProgramId, ProgramTitle, ProgramDescription);
+        return Objects.hash(ProgramId, ProgramTitle, ProgramDescription, programSession);
     }
 
     @Override
@@ -82,7 +98,9 @@ public class ProgramDto {
             " ProgramId='" + getProgramId() + "'" +
             ", ProgramTitle='" + getProgramTitle() + "'" +
             ", ProgramDescription='" + getProgramDescription() + "'" +
+            ", programSession='" + getProgramSession() + "'" +
             "}";
     }
-    
+
+
 }

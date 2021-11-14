@@ -9,7 +9,9 @@ import com.simplon.formation.presentation.model.SessionDto;
 
 public class SessionMapper {
     
-    private ProgramMapper programmapper = new ProgramMapper();
+    private ProgramMapper programMapper = new ProgramMapper();
+    private LearnerMapper learnerMapper = new LearnerMapper();
+    private FormerMapper formerMapper = new FormerMapper();
 
 /**
  * map a sessiondo ---> sessionDto
@@ -23,10 +25,9 @@ public class SessionMapper {
         }
         sessionDto.setSessionId(sessionDo.getSessionId());
         sessionDto.setSessionTitle(sessionDo.getSessionTitle());
-      //  sessionDto.FormerSession(sessionDo.getSessionFormer());
-      //en attandant les mapper de former et learner
-      
-        sessionDto.setProgramSession(programmapper.mapToProgramDto(sessionDo.getSessionProgram()));
+      //en attandant les mapper de learner
+      sessionDto.setFormerSession(formerMapper.mapToFormerDto(sessionDo.getSessionFormer()));
+        sessionDto.setProgramSession(programMapper.mapToProgramDto(sessionDo.getSessionProgram()));
         
         return sessionDto;
     }
@@ -43,8 +44,9 @@ public class SessionMapper {
         }
         sessionDo.setSessionId(sessionDto.getSessionId());
         sessionDo.setSessionTitle(sessionDto.getSessionTitle());
-        sessionDo.setSessionProgram(programmapper.mapToProgramDo(sessionDto.getProgramSession()));
-        //en attendant mapper lea,rner et former
+        sessionDo.setSessionProgram(programMapper.mapToProgramDo(sessionDto.getProgramSession()));
+        sessionDo.setSessionFormer(formerMapper.mapToFormerDo(sessionDto.getFormerSession()));
+        //en attendant mapper lea,rner 
         return sessionDo;
     }
     
