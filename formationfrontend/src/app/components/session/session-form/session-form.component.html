@@ -1,6 +1,6 @@
 <h1>Sessions</h1>
-<div class="session-form-container">
-    <form nz-form [formGroup]="validateForm" class="session-form" (ngSubmit)="submitForm()">
+<div class="gestion-formation-form-container">
+    <form nz-form [formGroup]="validateForm" class="gestion-formation-form" (ngSubmit)="submitForm()">
         <nz-form-item>
             <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un nom valide!">
                 <nz-input-group>
@@ -26,6 +26,7 @@
         </nz-form-item>
     </form>
 </div>
-<div class=" session-button-submit">
-    <button nz-button class="session-form-button session-form-margin" [nzType]="'primary'">Soumettre</button>
+<div class="gestion-formation-button-submit">
+    <button nz-button class="gestion-formation-form-button gestion-formation-form-margin"
+        [nzType]="'primary'">Soumettre</button>
 </div>
