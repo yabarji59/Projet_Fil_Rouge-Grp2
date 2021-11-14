@@ -15,7 +15,7 @@ public interface IFormerService {
 
     void updateFormer(Long formerId, FormerDto formerDto);
 
-    void deleteFormer(String formerName);
+    void deleteFormer(Long formerId);
 }
 
 

@@ -10,19 +10,18 @@ import com.simplon.formation.persistance.dao.IFormerDao;
 import com.simplon.formation.persistance.entities.FormerDo;
 import com.simplon.formation.presentation.model.FormerDto;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 @Service
 public class FormerServiceImpl  implements IFormerService{
-
+    
+    @Autowired
     private IFormerDao formerDao;
 
     private FormerMapper mapper = new FormerMapper();
 
-    public FormerServiceImpl(IFormerDao formerDao,FormerMapper mapper ) {
-         this.formerDao=formerDao;
-         this.mapper=mapper;
-    }
+
 
     @Override
     public List<FormerDto> getAllFormers() {
@@ -66,8 +65,8 @@ public class FormerServiceImpl  implements IFormerService{
     }
 
     @Override
-    public void deleteFormer(String formerName) {
-        this.formerDao.deleteByName(formerName);
+    public void deleteFormer(Long id) {
+        this.formerDao.deleteById(id);
         
     }
 

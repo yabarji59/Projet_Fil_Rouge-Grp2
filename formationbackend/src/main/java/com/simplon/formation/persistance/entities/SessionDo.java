@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 /**
  * /**
  * class object sessionDo
@@ -44,8 +46,8 @@ public class SessionDo {
     private FormerDo SessionFormer;
 
 
-    @OneToMany(mappedBy = "learner", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToMany(mappedBy = "learnerSession", targetEntity = LearnerDo.class, fetch = FetchType.LAZY)
     private List<LearnerDo> learners;
 
 /**simple constr */
