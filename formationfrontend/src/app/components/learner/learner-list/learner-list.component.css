@@ -4,3 +4,12 @@
   justify-items: center;
   row-gap: 2em;
 }
+
+:host ::ng-deep .ant-btn-primary {
+  background: linear-gradient(90deg, #e22a6f 0%, #fe6666 100%), #222222;
+  border-color: palevioletred;
+}
+
+.button-add {
+  position: absolute;
+}
