@@ -1,1 +1,24 @@
-<p>former-form works!</p>
+<h1>Formateurs</h1>
+<div class="gestion-formation-form-container">
+    <form nz-form [formGroup]="validateForm" class="gestion-formation-form">
+        <nz-form-item>
+            <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un nom valide!">
+                <nz-input-group>
+                    <input type="text" nz-input formControlName="surname" placeholder="Nom" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un Prénom valide!">
+                <nz-input-group>
+                    <input type="text" nz-input formControlName="name" placeholder="Prénom" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+
+    </form>
+</div>
+<div class=" gestion-formation-button-submit">
+    <button nz-button class="gestion-formation-form-button gestion-formation-form-margin" [nzType]="'primary'"
+        (click)="submitForm()">Soumettre</button>
+</div>

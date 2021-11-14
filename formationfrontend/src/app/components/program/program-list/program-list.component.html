@@ -1,6 +1,6 @@
 <h1>Programmes</h1>
 <div class="program-container">
-    <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit]"
+    <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit,actionEllipsis]"
         *ngFor="let program of programs">
         <nz-card-meta nzTitle="#{{program?.id }}{{program.program.title}}"
             nzDescription="{{program.program.description}}" [nzAvatar]="avatarTemplate">
@@ -19,7 +19,11 @@
         <a routerLink="/program-edit/{{program?.id}}">
             <i nz-icon nzType="edit"></i>
         </a>
-
+    </ng-template>
+    <ng-template #actionEllipsis>
+        <a routerLink="/program-detail/{{program?.id}}">
+            <i nz-icon nzType="ellipsis"></i>
+        </a>
     </ng-template>
 
 </div>

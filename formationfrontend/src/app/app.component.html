@@ -1,4 +1,4 @@
-<nz-layout class="app-layout">
+<nz-layout class="app-layout" *ngIf="currentUrl != '/login'">
     <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
         [nzTrigger]="null">
         <div class="sidebar-logo">
@@ -45,3 +45,5 @@
         </nz-content>
     </nz-layout>
 </nz-layout>
+
+<app-login style="width: 100%; height: 100%;" *ngIf="currentUrl == '/login'"></app-login>

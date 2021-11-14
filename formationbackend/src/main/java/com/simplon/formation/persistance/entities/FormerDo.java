@@ -1,5 +1,6 @@
 package com.simplon.formation.persistance.entities;
 
+import javax.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -25,6 +26,8 @@ public class FormerDo implements Serializable {
     @Column(name="former_lastname")
     private String formerLastname; 
 
+    @OneToOne(mappedBy ="SessionFormer")
+    private SessionDo Session;
     
     /** 
      * @return String
@@ -118,6 +121,14 @@ public class FormerDo implements Serializable {
     }
 
     public FormerDo() {
+    }
+
+    public SessionDo getSession() {
+        return this.Session;
+    }
+
+    public void setSession(SessionDo Session) {
+        this.Session = Session;
     }
 
 }

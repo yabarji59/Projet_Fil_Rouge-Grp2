@@ -7,6 +7,7 @@ import com.simplon.formation.presentation.model.ProgramDto;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,9 +24,6 @@ public class ProgramController {
     
     @Autowired
     IProgramService programService;
-    public ProgramController(IProgramService programService){
-        this.programService=programService;
-    }
 
 
     /**
@@ -82,4 +80,15 @@ public class ProgramController {
 		}
 
 	}
+	@RequestMapping("/test/welcome")
+    public String welcome(){
+
+        return "welcome to springboot";
+
+    }
+	
+	@DeleteMapping("/programs/{id}")
+    public void delete(@PathVariable Long id) {
+        programService.deleteProgram(id);
+    }
 }
