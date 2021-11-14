@@ -9,22 +9,25 @@ import com.simplon.formation.persistance.dao.IProgramDao;
 import com.simplon.formation.persistance.entities.ProgramDo;
 import com.simplon.formation.presentation.model.ProgramDto;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 /**
  * Service class of the program object implementing the IProgramService interface 
  */
 @Service
 public class ProgramServiceImpl  implements IProgramService{
 
+    
     private IProgramDao programDao;
 
     private ProgramMapper mapper = new ProgramMapper();
 
-    public ProgramServiceImpl(IProgramDao programDao,ProgramMapper mapper ) {
-         this.programDao=programDao;
-         this.mapper=mapper;
+    public ProgramServiceImpl(IProgramDao programDao) {
+        
+        this.programDao=programDao;
     }
+
 
     @Override
     public List<ProgramDto> getAllPrograms() {

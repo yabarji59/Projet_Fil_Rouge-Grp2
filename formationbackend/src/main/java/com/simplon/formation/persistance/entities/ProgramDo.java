@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 /**
  * class object programDo
@@ -28,13 +29,17 @@ public class ProgramDo {
     private String ProgramDescription;
 
 
+    @OneToOne(mappedBy ="SessionProgram")
+    private SessionDo Session;
+
     public ProgramDo() {
     }
 
-    public ProgramDo(long ProgramId, String ProgramTitle, String ProgramDescription) {
+    public ProgramDo(long ProgramId, String ProgramTitle, String ProgramDescription, SessionDo Session) {
         this.ProgramId = ProgramId;
         this.ProgramTitle = ProgramTitle;
         this.ProgramDescription = ProgramDescription;
+        this.Session = Session;
     }
 
     public long getProgramId() {
@@ -61,6 +66,14 @@ public class ProgramDo {
         this.ProgramDescription = ProgramDescription;
     }
 
+    public SessionDo getSession() {
+        return this.Session;
+    }
+
+    public void setSession(SessionDo Session) {
+        this.Session = Session;
+    }
+
     public ProgramDo ProgramId(long ProgramId) {
         setProgramId(ProgramId);
         return this;
@@ -76,6 +89,11 @@ public class ProgramDo {
         return this;
     }
 
+    public ProgramDo Session(SessionDo Session) {
+        setSession(Session);
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -84,12 +102,12 @@ public class ProgramDo {
             return false;
         }
         ProgramDo programDo = (ProgramDo) o;
-        return ProgramId == programDo.ProgramId && Objects.equals(ProgramTitle, programDo.ProgramTitle) && Objects.equals(ProgramDescription, programDo.ProgramDescription);
+        return ProgramId == programDo.ProgramId && Objects.equals(ProgramTitle, programDo.ProgramTitle) && Objects.equals(ProgramDescription, programDo.ProgramDescription) && Objects.equals(Session, programDo.Session);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ProgramId, ProgramTitle, ProgramDescription);
+        return Objects.hash(ProgramId, ProgramTitle, ProgramDescription, Session);
     }
 
     @Override
@@ -98,6 +116,7 @@ public class ProgramDo {
             " ProgramId='" + getProgramId() + "'" +
             ", ProgramTitle='" + getProgramTitle() + "'" +
             ", ProgramDescription='" + getProgramDescription() + "'" +
+            ", Session='" + getSession() + "'" +
             "}";
     }
 

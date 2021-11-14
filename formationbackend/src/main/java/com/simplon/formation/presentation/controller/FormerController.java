@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class FormerController {
 
     @Autowired
-    IFormerService programService;
+    IFormerService formerService;
     
     public FormerController(IFormerService formerService){
         this.formerService = formerService;
@@ -30,9 +30,9 @@ public class FormerController {
         @GetMapping({ "/formers" })
         public List<FormerDto> list(@RequestParam(required = false) String name) {
             if (StringUtils.isEmpty(name)) {
-                return programService.getAllFormers();
+                return formerService.getAllFormers();
             }
-            return formerService.findFormerByName    }
+            return formerService.findFormerByName(name)  ; }
 
     
 }

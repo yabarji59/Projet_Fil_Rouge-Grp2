@@ -5,7 +5,7 @@ import java.util.List;
 import com.simplon.formation.presentation.model.ProgramDto;
 /**
  * 
- * IPostServices interface for management business methods for programs
+ * IProgramServices interface for management business methods for programs
 
  */
 
@@ -21,7 +21,7 @@ public interface IProgramService {
 	 * return the list of programs from a title
 	 * 
 	 * @param title
-	 * @return allPrograms
+	 * @return List of programs from title
 	 */
 	 
     List<ProgramDto> findProgramByTitle(String title);
@@ -44,7 +44,7 @@ public interface IProgramService {
 	 * 
 	 * @param id
 	 * @param programDto
-	 * @return id
+	 * 
 	 */
     void updateProgram(Long id, ProgramDto programDto);
     /**
