@@ -4,6 +4,7 @@ import { FormerFormComponent } from './components/former/former-form/former-form
 import { FormerListComponent } from './components/former/former-list/former-list.component';
 import { LearnerFormComponent } from './components/learner/learner-form/learner-form.component';
 import { LearnerListComponent } from './components/learner/learner-list/learner-list.component';
+import { ProgramDetailComponent } from './components/program/program-detail/program-detail.component';
 import { ProgramFormComponent } from './components/program/program-form/program-form.component';
 import { ProgramListComponent } from './components/program/program-list/program-list.component';
 import { LoginComponent } from './components/security/login/login.component';
@@ -26,6 +27,8 @@ const routes: Routes = [
   { path: 'program', component: ProgramListComponent },
   { path: 'program-edit', component: ProgramFormComponent },
   { path: 'program-edit/:id', component: ProgramFormComponent },
+  { path: 'program-detail', component: ProgramDetailComponent },
+  { path: 'program-edit/:id', component: ProgramDetailComponent },
   { path: 'login', component: LoginComponent },
   { path: '', pathMatch: 'full', redirectTo: '/session' },
   { path: '**', pathMatch: 'full', redirectTo: '/session' },
