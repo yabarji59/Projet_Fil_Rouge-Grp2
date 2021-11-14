@@ -11,6 +11,7 @@ export class SessionFormComponent implements OnInit {
 
   submitForm(): void {
     console.log('submit', this.validateForm);
+    console.log(this.validateForm.value);
     if (this.validateForm.valid) {
       console.log('form valid');
     } else {
@@ -28,7 +29,7 @@ export class SessionFormComponent implements OnInit {
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       name: [null, [Validators.required]],
-      former: ['null', [Validators.required]],
+      former: [null, [Validators.required]],
       program: [null, [Validators.required]],
     });
   }
