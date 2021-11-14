@@ -4,7 +4,7 @@ import com.simplon.formation.business.services.interfaces.IFormerService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import com.simplon.formation.business.services.interfaces.IFormerService;
+
 import com.simplon.formation.business.utils.mappers.FormerMapper;
 import com.simplon.formation.persistance.dao.IFormerDao;
 import com.simplon.formation.persistance.entities.FormerDo;
@@ -33,9 +33,15 @@ public class FormerServiceImpl  implements IFormerService{
 
 
      @Override
-    public FormerDto findFormerByName(String formerName) {
+    public List <FormerDto> findFormerByName(String formerName) {
+        List<FormerDto> allFormers = new ArrayList<FormerDto>();
+        allFormers = mapper.mapToListFormersDto(formerDao.findAllByNameContaining(formerName));
+        return allFormers;
+    }
+    @Override
+    public FormerDto findFormerById(Long formerId) {
         FormerDto formerDtoId = new FormerDto();
-        Optional<FormerDo> formerDo = formerDao.findFormerByName(formerName);
+        Optional<FormerDo> formerDo = formerDao.findById(formerId);
 
         if(formerDo.isPresent()){
             FormerDo former = new FormerDo();
@@ -44,7 +50,6 @@ public class FormerServiceImpl  implements IFormerService{
             return formerDtoId;
         }
         throw new RuntimeException("that object does not exist");
-    
     }
 
     @Override
@@ -62,7 +67,7 @@ public class FormerServiceImpl  implements IFormerService{
 
     @Override
     public void deleteFormer(String formerName) {
-        this.formerDao.deleteById(id);
+        this.formerDao.deleteByName(formerName);
         
     }
 

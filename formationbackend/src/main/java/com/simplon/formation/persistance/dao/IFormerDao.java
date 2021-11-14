@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IFormerDao extends JpaRepository<FormerDo, Long>{
-    
+    List<FormerDo> findAllByNameContaining(String name);
+    void deleteByName(String name);
     
 }
