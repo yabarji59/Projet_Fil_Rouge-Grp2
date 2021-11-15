@@ -2,8 +2,6 @@ package com.simplon.formation.persistance.entities;
 
 import java.util.List;
 import java.util.Objects;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 /**
  * /**
  * class object sessionDo
@@ -44,8 +44,8 @@ public class SessionDo {
     private FormerDo SessionFormer;
 
 
-    @OneToMany(mappedBy = "learner", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToMany(mappedBy = "learnerSession", targetEntity = LearnerDo.class, fetch = FetchType.LAZY)
     private List<LearnerDo> learners;
 
 /**simple constr */
@@ -55,6 +55,12 @@ public class SessionDo {
 
     public SessionDo(Long SessionId, String SessionTitle, ProgramDo SessionProgram, FormerDo SessionFormer, List<LearnerDo> learners) {
         this.SessionId = SessionId;
+        this.SessionTitle = SessionTitle;
+        this.SessionProgram = SessionProgram;
+        this.SessionFormer = SessionFormer;
+        this.learners = learners;
+    }
+    public SessionDo( String SessionTitle, ProgramDo SessionProgram, FormerDo SessionFormer, List<LearnerDo> learners) {
         this.SessionTitle = SessionTitle;
         this.SessionProgram = SessionProgram;
         this.SessionFormer = SessionFormer;

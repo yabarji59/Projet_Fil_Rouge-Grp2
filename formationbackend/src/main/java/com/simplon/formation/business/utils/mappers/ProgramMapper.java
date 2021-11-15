@@ -38,7 +38,9 @@ public class ProgramMapper {
         if (programDto == null) {
             return null;
         }
-        programDo.setProgramId(programDto.getProgramId());
+        if(programDto.getProgramId()!= null) {
+
+        programDo.setProgramId(programDto.getProgramId());}
         programDo.setProgramTitle(programDto.getProgramTitle());
         programDo.setProgramDescription(programDto.getProgramDescription());
         return programDo;

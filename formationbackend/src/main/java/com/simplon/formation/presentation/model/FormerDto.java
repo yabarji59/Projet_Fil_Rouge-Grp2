@@ -6,70 +6,70 @@ public class FormerDto {
     private Long formerId;
     private String formerName;
     private String formerLastname;
-
+    private SessionDto formerSession;
 
     public FormerDto() {
     }
 
-    public FormerDto(Long formerId, String formerName, String formerLastname) {
+    public FormerDto(Long formerId, String formerName, String formerLastname, SessionDto formerSession) {
         this.formerId = formerId;
         this.formerName = formerName;
         this.formerLastname = formerLastname;
+        this.formerSession = formerSession;
     }
 
-    
-    /** 
-     * @return Long
-     */
     public Long getFormerId() {
         return this.formerId;
     }
 
-    
-    /** 
-     * @param formerId
-     */
     public void setFormerId(Long formerId) {
         this.formerId = formerId;
     }
 
-    
-    /** 
-     * @return String
-     */
     public String getFormerName() {
         return this.formerName;
     }
 
-    
-    /** 
-     * @param formerName
-     */
     public void setFormerName(String formerName) {
         this.formerName = formerName;
     }
 
-    
-    /** 
-     * @return String
-     */
     public String getFormerLastname() {
         return this.formerLastname;
     }
 
-    
-    /** 
-     * @param formerLastname
-     */
     public void setFormerLastname(String formerLastname) {
         this.formerLastname = formerLastname;
     }
 
-    
-    /** 
-     * @param o
-     * @return boolean
-     */
+    public SessionDto getFormerSession() {
+        return this.formerSession;
+    }
+
+    public void setFormerSession(SessionDto formerSession) {
+        this.formerSession = formerSession;
+    }
+
+    public FormerDto formerId(Long formerId) {
+        setFormerId(formerId);
+        return this;
+    }
+
+    public FormerDto formerName(String formerName) {
+        setFormerName(formerName);
+        return this;
+    }
+
+    public FormerDto formerLastname(String formerLastname) {
+        setFormerLastname(formerLastname);
+        return this;
+    }
+
+    public FormerDto formerSession(SessionDto formerSession) {
+        setFormerSession(formerSession);
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -78,30 +78,22 @@ public class FormerDto {
             return false;
         }
         FormerDto formerDto = (FormerDto) o;
-        return Objects.equals(formerId, formerDto.formerId) && Objects.equals(formerName, formerDto.formerName) && Objects.equals(formerLastname, formerDto.formerLastname);
+        return Objects.equals(formerId, formerDto.formerId) && Objects.equals(formerName, formerDto.formerName) && Objects.equals(formerLastname, formerDto.formerLastname) && Objects.equals(formerSession, formerDto.formerSession);
     }
 
-    
-    /** 
-     * @return int
-     */
     @Override
     public int hashCode() {
-        return Objects.hash(formerId, formerName, formerLastname);
+        return Objects.hash(formerId, formerName, formerLastname, formerSession);
     }
 
-    
-    /** 
-     * @return String
-     */
     @Override
     public String toString() {
         return "{" +
             " formerId='" + getFormerId() + "'" +
             ", formerName='" + getFormerName() + "'" +
             ", formerLastname='" + getFormerLastname() + "'" +
+            ", formerSession='" + getFormerSession() + "'" +
             "}";
     }
 
-    
 }

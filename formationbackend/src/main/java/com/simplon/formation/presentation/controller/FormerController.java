@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -24,7 +25,6 @@ public class FormerController {
 
     @Autowired
     IFormerService formerService;
-    
     public FormerController(IFormerService formerService){
         this.formerService=formerService;
     }
@@ -34,12 +34,19 @@ public class FormerController {
             if (StringUtils.isEmpty(name)) {
                 return formerService.getAllFormers();
             }
-            return formerService.findFormerByName(name); }
+            return formerService.getAllFormers();   
+         }
 
-         @GetMapping({ "/formers/{name}" })
-         public FormerDto getByName(@PathVariable String formerName) {
-          FormerDto formerDto = formerService.findFormerByName(formerName);
-          return formerDto;
+         @GetMapping({ "/formers?name={name}" })
+         public List<FormerDto> findFormerByName (String formerName)  {
+             List<FormerDto> formers = formerService.findFormerByName(formerName);
+             return formers;
+            
+         }
+         @GetMapping({ "/formers/{id}" })
+         public FormerDto findFormerById(@PathVariable Long id) {
+             FormerDto formerDto = formerService.findFormerById(id);
+             return formerDto;
          }
 
          @PostMapping({ "/formers" })
@@ -48,19 +55,16 @@ public class FormerController {
     }
 
     @PutMapping("/formers/{id}")
-	public void update(@PathVariable String formerName, @RequestBody FormerDto formerDto) {
-		FormerDto currentFormerDto = formerService.findFormerByName(formerName);
+	public void update(@PathVariable Long id, @RequestBody FormerDto formerDto) {
+		FormerDto currentFormerDto = formerService.findFormerById(id);
 		if (currentFormerDto != null) {
-			formerService.updateFormer(formerName, formerDto);
+			formerService.updateFormer(id, formerDto);
 		} else {
 			formerService.createFormer(formerDto);
 		}
     }
+    @DeleteMapping("/formers/{id}")
+    public void delete(@PathVariable Long id) {
+        formerService.deleteFormer(id);
+    }
 }
-
-
-    
- 
-
-
-    
