@@ -10,7 +10,7 @@ import com.simplon.formation.presentation.model.SessionDto;
 public class SessionMapper {
     
     private ProgramMapper programMapper = new ProgramMapper();
-    private LearnerMapper learnerMapper = new LearnerMapper();
+// private LearnerMapper learnerMapper = new LearnerMapper();
     private FormerMapper formerMapper = new FormerMapper();
 
 /**

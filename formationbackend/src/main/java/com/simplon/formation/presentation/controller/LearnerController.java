@@ -71,8 +71,11 @@ public class LearnerController {
      */
     @PostMapping({ "/learners" })
 	public void createLearnerDto(@RequestBody LearnerDto learnerDto) {
+
 		learnerService.createLearner(learnerDto);
-	}
+        if(learnerDto.getLearnerSession().getSessionId() != null ) {
+        learnerService.assignLearnertoSession(learnerDto.getLearnerId(), learnerDto.getLearnerSession().getSessionId());
+	}}
 
     /**
      * Update a learner or create a new one if the id is null

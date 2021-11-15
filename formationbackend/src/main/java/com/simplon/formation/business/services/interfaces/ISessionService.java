@@ -62,11 +62,6 @@ public void assignProgramtoSession( Long programId,Long sessionId);
  */
 public void assignFormertoSession( Long formerId,Long sessionId);
 
-/**
- * assign learner to session
- * @param learnerId
- * @param sessionId
- */
-public void assignLearnertoSession(Long learnerId,Long sessionId);
+
 
 }
