@@ -49,6 +49,12 @@ public class LearnerDo {
         this.learnerFirstname = learnerFirstname;
     }
 
+    public LearnerDo(String learnerName, String learnerFirstname, SessionDo learnerSession) {
+        this.learnerName = learnerName;
+        this.learnerFirstname = learnerFirstname;
+        this.learnerSession = learnerSession;
+    }
+
     public LearnerDo(Long learnerId, String learnerName, String learnerFirstname, SessionDo learnerSession) {
         this.learnerId = learnerId;
         this.learnerName = learnerName;
