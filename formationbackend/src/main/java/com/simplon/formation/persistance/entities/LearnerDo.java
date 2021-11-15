@@ -18,12 +18,8 @@ import javax.persistence.Table;
 @Table(name = "learner")
 public class LearnerDo {
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "learner_id", nullable = false)
-    private SessionDo session;
-    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="learner_id")
     private Long learnerId;
 
@@ -34,7 +30,7 @@ public class LearnerDo {
     private String learnerFirstname;
 
     @ManyToOne(targetEntity = SessionDo.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "learner_id", nullable = false)
+    @JoinColumn(name = "session_id", nullable = true,insertable = true, updatable = true)
     private SessionDo learnerSession;
     
 

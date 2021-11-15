@@ -32,7 +32,7 @@ public class LearnerServiceImpl  implements ILearnerService{
     @Override
     public List<LearnerDto> findAllLearnersByName(String learnerName) {
         List<LearnerDto> listLearners = new ArrayList<LearnerDto>();
-        listLearners = learnerMapper.mapToListLearnersDto(learnerDao.findAllByTitleContaining(learnerName));
+        listLearners = learnerMapper.mapToListLearnersDto(learnerDao.findAllByNameContaining(learnerName));
         return listLearners;
     }
 

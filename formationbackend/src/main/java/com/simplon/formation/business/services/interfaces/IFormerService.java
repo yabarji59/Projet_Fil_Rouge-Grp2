@@ -15,11 +15,7 @@ public interface IFormerService {
 
     void updateFormer(Long id, FormerDto formerDto);
 
-<<<<<<< HEAD
-    void deleteFormer(Long formerId);
-=======
     void deleteFormer(Long id);
->>>>>>> develop
 }
 
 

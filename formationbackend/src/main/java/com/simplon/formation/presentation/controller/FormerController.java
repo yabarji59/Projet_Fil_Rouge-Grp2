@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -36,12 +37,16 @@ public class FormerController {
             return formerService.getAllFormers();   
          }
 
-         @GetMapping({ "/formers/{}" })
-         public FormerDto (@RequestParam(required = true) ) {
-            if (StringUtils.isEmpty(id)) {
-                return formerService.findFormerByName();
-            }
-            return formerService.get
+         @GetMapping({ "/formers?name={name}" })
+         public List<FormerDto> findFormerByName (String formerName)  {
+             List<FormerDto> formers = formerService.findFormerByName(formerName);
+             return formers;
+            
+         }
+         @GetMapping({ "/formers/{id}" })
+         public FormerDto findFormerById(@PathVariable Long id) {
+             FormerDto formerDto = formerService.findFormerById(id);
+             return formerDto;
          }
 
          @PostMapping({ "/formers" })
@@ -58,11 +63,8 @@ public class FormerController {
 			formerService.createFormer(formerDto);
 		}
     }
+    @DeleteMapping("/formers/{id}")
+    public void delete(@PathVariable Long id) {
+        formerService.deleteFormer(id);
+    }
 }
-
-
-    
- 
-
-
-    

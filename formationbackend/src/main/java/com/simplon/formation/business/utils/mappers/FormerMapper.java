@@ -19,7 +19,8 @@ public class FormerMapper {
         if (formerDo == null) {
             return null;
         }
-        formerDto.setFormerId(formerDo.getFormerId());
+        if(formerDo.getFormerId()!= null) {
+        formerDto.setFormerId(formerDo.getFormerId());}
         formerDto.setFormerName(formerDo.getFormerName());
         formerDto.setFormerLastname(formerDo.getFormerLastname());
         
