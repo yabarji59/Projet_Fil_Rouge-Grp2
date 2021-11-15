@@ -2,8 +2,6 @@ package com.simplon.formation.persistance.entities;
 
 import java.util.List;
 import java.util.Objects;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -57,6 +55,12 @@ public class SessionDo {
 
     public SessionDo(Long SessionId, String SessionTitle, ProgramDo SessionProgram, FormerDo SessionFormer, List<LearnerDo> learners) {
         this.SessionId = SessionId;
+        this.SessionTitle = SessionTitle;
+        this.SessionProgram = SessionProgram;
+        this.SessionFormer = SessionFormer;
+        this.learners = learners;
+    }
+    public SessionDo( String SessionTitle, ProgramDo SessionProgram, FormerDo SessionFormer, List<LearnerDo> learners) {
         this.SessionTitle = SessionTitle;
         this.SessionProgram = SessionProgram;
         this.SessionFormer = SessionFormer;

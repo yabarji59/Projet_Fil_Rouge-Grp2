@@ -34,12 +34,22 @@ public class ProgramDo {
 
     public ProgramDo() {
     }
+    public ProgramDo(String ProgramTitle, String ProgramDescription, SessionDo Session) {
+        this.ProgramTitle = ProgramTitle;
+        this.ProgramDescription = ProgramDescription;
+        this.Session = Session;
+    }
 
     public ProgramDo(long ProgramId, String ProgramTitle, String ProgramDescription, SessionDo Session) {
         this.ProgramId = ProgramId;
         this.ProgramTitle = ProgramTitle;
         this.ProgramDescription = ProgramDescription;
         this.Session = Session;
+    }
+    public ProgramDo( String ProgramTitle, String ProgramDescription) {
+        this.ProgramTitle = ProgramTitle;
+        this.ProgramDescription = ProgramDescription;
+       
     }
 
     public long getProgramId() {

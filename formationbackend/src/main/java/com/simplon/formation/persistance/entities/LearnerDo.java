@@ -25,7 +25,7 @@ public class LearnerDo {
 
  
     @ManyToOne(targetEntity = SessionDo.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "learner_id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "learner_id", nullable = true,insertable = false, updatable = false)
     private SessionDo learnerSession;
 
 
