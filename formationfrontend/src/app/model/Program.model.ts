@@ -1,5 +1,6 @@
 export class Program {
-  program_id?: any;
-  program_title?: string;
-  program_description?: string;
+  programId?: any;
+  programTitle?: string;
+  programDescription?: string;
+  //programSession?: Session;
 }
