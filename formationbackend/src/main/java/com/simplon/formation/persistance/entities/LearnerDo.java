@@ -16,10 +16,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "learner")
 public class LearnerDo {
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "learner_id", nullable = false)
-    private SessionDo session;
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
