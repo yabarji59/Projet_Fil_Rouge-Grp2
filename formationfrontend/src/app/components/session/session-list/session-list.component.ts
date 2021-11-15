@@ -25,6 +25,10 @@ export class SessionListComponent implements OnInit {
     },
   ];
   submitForm(): void {}
+  filterSession($event: KeyboardEvent): void {
+    const filter = ($event.target as HTMLTextAreaElement).value.toLowerCase();
+    this.sessions = this.sessions.filter((session) => session.name === filter);
+  }
   constructor() {}
 
   ngOnInit(): void {}

@@ -20,6 +20,12 @@ export class ProgramListComponent implements OnInit {
     },
   ];
   submitForm(): void {}
+  filterProgram($event: KeyboardEvent): void {
+    const filter = ($event.target as HTMLTextAreaElement).value.toLowerCase();
+    this.programs = this.programs.filter(
+      (program) => program.session.name === filter
+    );
+  }
   constructor() {}
 
   ngOnInit(): void {}
