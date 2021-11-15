@@ -213,6 +213,7 @@ export class LearnerListComponent implements OnInit {
     },
   ];
 
+  submitForm(): void {}
   constructor() {}
 
   ngOnInit(): void {}

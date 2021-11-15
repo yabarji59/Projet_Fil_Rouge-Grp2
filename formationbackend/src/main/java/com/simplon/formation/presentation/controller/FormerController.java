@@ -9,11 +9,13 @@ import com.simplon.formation.presentation.model.FormerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -22,9 +24,8 @@ public class FormerController {
 
     @Autowired
     IFormerService formerService;
-    
     public FormerController(IFormerService formerService){
-        this.formerService = formerService;
+        this.formerService=formerService;
     }
 
         @GetMapping({ "/formers" })
@@ -32,7 +33,36 @@ public class FormerController {
             if (StringUtils.isEmpty(name)) {
                 return formerService.getAllFormers();
             }
-            return formerService.findFormerByName(name)  ; }
+            return formerService.getAllFormers();   
+         }
+
+         @GetMapping({ "/formers/{}" })
+         public FormerDto (@RequestParam(required = true) ) {
+            if (StringUtils.isEmpty(id)) {
+                return formerService.findFormerByName();
+            }
+            return formerService.get
+         }
+
+         @PostMapping({ "/formers" })
+	public void save(@RequestBody FormerDto formerDto) {
+		this.formerService.createFormer(formerDto);
+    }
+
+    @PutMapping("/formers/{id}")
+	public void update(@PathVariable Long id, @RequestBody FormerDto formerDto) {
+		FormerDto currentFormerDto = formerService.findFormerById(id);
+		if (currentFormerDto != null) {
+			formerService.updateFormer(id, formerDto);
+		} else {
+			formerService.createFormer(formerDto);
+		}
+    }
+}
+
 
     
-}
+ 
+
+
+    

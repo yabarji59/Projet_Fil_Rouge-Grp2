@@ -32,10 +32,15 @@ public class FormerServiceImpl  implements IFormerService{
 
 
      @Override
-    public List <FormerDto> findFormerByName(String formerName) {
-        List<FormerDto> allFormers = new ArrayList<FormerDto>();
-        allFormers = mapper.mapToListFormersDto(formerDao.findAllByNameContaining(formerName));
-        return allFormers;
+    public List<FormerDto> findFormerByName(String formerName) {
+        List<FormerDto> formers = new ArrayList<FormerDto>();
+        formers = mapper.mapToListFormersDto(formerDao.findAllByNameContaining(formerName));
+        return formers ; 
+        
+
+        
+        
+       
     }
     
     @Override
@@ -63,7 +68,13 @@ public class FormerServiceImpl  implements IFormerService{
     @Override
     public void updateFormer(Long id, FormerDto formerDto) {
         
-    }
+            FormerDo formerDo = formerDao.findById(id).get();
+            formerDo.setFormerName(formerDto.getFormerName());
+            formerDo.setFormerLastname(formerDto.getFormerLastname());
+            formerDao.save(formerDo);
+             }
+        
+    
 
     @Override
     public void deleteFormer(Long id) {

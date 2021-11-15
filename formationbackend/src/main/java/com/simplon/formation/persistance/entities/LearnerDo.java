@@ -1,6 +1,5 @@
 package com.simplon.formation.persistance.entities;
 
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,23 +11,80 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * LearnerDo model class
+ */
 @Entity
-@Table(name="learner")
+@Table(name = "learner")
 public class LearnerDo {
 
-
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "learner_id", nullable = false)
+    private SessionDo session;
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="learner_id")
-    private long LearnerId;
+    private Long learnerId;
 
+    @Column(name="learner_name")
+    private String learnerName;
 
- 
+    @Column(name="learner_firstname")
+    private String learnerFirstname;
+
     @ManyToOne(targetEntity = SessionDo.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "learner_id", nullable = true,insertable = false, updatable = false)
+    @JoinColumn(name = "learner_id", nullable = false)
     private SessionDo learnerSession;
+    
 
 
+    public LearnerDo() {
+    }
+
+    public LearnerDo(String learnerName, String learnerFirstname) {
+        this.learnerName = learnerName;
+        this.learnerFirstname = learnerFirstname;
+    }
+
+    public LearnerDo(Long learnerId, String learnerName, String learnerFirstname) {
+        this.learnerId = learnerId;
+        this.learnerName = learnerName;
+        this.learnerFirstname = learnerFirstname;
+    }
+
+    public LearnerDo(Long learnerId, String learnerName, String learnerFirstname, SessionDo learnerSession) {
+        this.learnerId = learnerId;
+        this.learnerName = learnerName;
+        this.learnerFirstname = learnerFirstname;
+        this.learnerSession = learnerSession;
+    }
+
+
+
+    public Long getLearnerId() {
+        return this.learnerId;
+    }
+
+    public void setLearnerId(Long learnerId) {
+        this.learnerId = learnerId;
+    }
+
+    public String getLearnerName() {
+        return this.learnerName;
+    }
+
+    public void setLearnerName(String learnerName) {
+        this.learnerName = learnerName;
+    }
+
+    public String getLearnerFirstname() {
+        return this.learnerFirstname;
+    }
+
+    public void setLearnerFirstname(String learnerFirstname) {
+        this.learnerFirstname = learnerFirstname;
+    }
 
     public SessionDo getLearnerSession() {
         return this.learnerSession;
@@ -38,59 +94,18 @@ public class LearnerDo {
         this.learnerSession = learnerSession;
     }
 
-   
-
-    public LearnerDo learnerSession(SessionDo learnerSession) {
-        setLearnerSession(learnerSession);
-        return this;
-    }
-
-
-    public LearnerDo() {
-    }
-
-    public LearnerDo(long LearnerId, SessionDo learnerSession) {
-        this.LearnerId = LearnerId;
-        this.learnerSession = learnerSession;
-    }
-
-    public long getLearnerId() {
-        return this.LearnerId;
-    }
-
-    public void setLearnerId(long LearnerId) {
-        this.LearnerId = LearnerId;
-    }
-
-    public LearnerDo LearnerId(long LearnerId) {
-        setLearnerId(LearnerId);
-        return this;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof LearnerDo)) {
-            return false;
-        }
-        LearnerDo learnerDo = (LearnerDo) o;
-        return LearnerId == learnerDo.LearnerId && Objects.equals(learnerSession, learnerDo.learnerSession);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(LearnerId, learnerSession);
-    }
 
     @Override
     public String toString() {
         return "{" +
-            " LearnerId='" + getLearnerId() + "'" +
-            ", learnerSession='" + getLearnerSession() + "'" +
+            " learnerId='" + getLearnerId() + "'" +
+            ", learnerName='" + getLearnerName() + "'" +
+            ", learnerFirstname='" + getLearnerFirstname() + "'" +
+            ", session='" + getLearnerSession() + "'" +
             "}";
     }
-  
 
-    
+
+
+
 }
