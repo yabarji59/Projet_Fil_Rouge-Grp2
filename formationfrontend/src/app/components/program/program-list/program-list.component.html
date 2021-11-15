@@ -8,8 +8,8 @@
 <div class="program-container">
     <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit,actionEllipsis]"
         *ngFor="let program of programs">
-        <nz-card-meta nzTitle="#{{program?.id }}{{program.program.title}}"
-            nzDescription="{{program.program.description}}" [nzAvatar]="avatarTemplate">
+        <nz-card-meta nzTitle="#{{program?.programId }} {{program?.programTitle}}"
+            nzDescription="{{program.programDescription}}" [nzAvatar]="avatarTemplate">
         </nz-card-meta>
     </nz-card>
     <ng-template #avatarTemplate>
@@ -22,15 +22,15 @@
         <i nz-icon nzType="delete"></i>
     </ng-template>
     <ng-template #actionEdit>
-        <a routerLink="/program-edit/{{program?.id}}">
+        <a routerLink="/program-edit/{{program?.programId}}">
             <i nz-icon nzType="edit"></i>
         </a>
     </ng-template>
     <ng-template #actionEllipsis>
-        <a routerLink="/program-detail/{{program?.id}}">
+        <a routerLink="/program-detail/{{program?.programId}}">
             <i nz-icon nzType="ellipsis"></i>
         </a>
     </ng-template>
 </div>
 <button class="button-add" nz-button nzType="primary" nzShape="circle"><i nz-icon nzType="appstore-add"
-        nzTheme="outline" (click)="submitForm()"><a class="button-add" routerLink="/program-edit"></a></i></button>
+        nzTheme="outline"><a class="button-add" routerLink="/program-edit"></a></i></button>

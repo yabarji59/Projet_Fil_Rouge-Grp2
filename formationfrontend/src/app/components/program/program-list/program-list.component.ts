@@ -1,4 +1,7 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Program } from 'src/app/model/Program.model';
+import { ProgramService } from 'src/app/services/Program.service';
 
 @Component({
   selector: 'app-program-list',
@@ -6,27 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./program-list.component.css'],
 })
 export class ProgramListComponent implements OnInit {
-  programs = [
-    {
-      id: '1',
-      session: {
-        name: 'POEI JAVA',
-      },
-      program: {
-        title: 'Programme Java',
-        description:
-          "Un programme Java est composé d'un ou plus généralement plusieurs fichiers source. N'importe quel éditeur de texte peut être utilisé pour éditer un fichier source Java. Il est nécessaire de compiler le source pour le transformer en J-code ou bytecode Java qui sera lui exécuté par la machine virtuelle",
-      },
-    },
-  ];
-  submitForm(): void {}
+  programs: Program[];
+  programsOriginal: Program[];
+
   filterProgram($event: KeyboardEvent): void {
     const filter = ($event.target as HTMLTextAreaElement).value.toLowerCase();
-    this.programs = this.programs.filter(
-      (program) => program.session.name === filter
+    this.programs = this.programsOriginal.filter((program) =>
+      program.programTitle.toLowerCase().includes(filter)
     );
   }
-  constructor() {}
+  constructor(private programService: ProgramService) {
+    this.programService.findAll().subscribe((res: HttpResponse<Program[]>) => {
+      this.programs = res.body;
+      this.programsOriginal = this.programs;
+    });
+  }
 
   ngOnInit(): void {}
 }

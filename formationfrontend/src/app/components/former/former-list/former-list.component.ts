@@ -26,7 +26,6 @@ export class FormerListComponent implements OnInit {
     },
   ];
 
-  submitForm(): void {}
   filterFormer($event: KeyboardEvent): void {
     const filter = ($event.target as HTMLTextAreaElement).value.toLowerCase();
     this.formers = this.formers.filter((former) => former.name === filter);
