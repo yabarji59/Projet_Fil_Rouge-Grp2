@@ -214,6 +214,10 @@ export class LearnerListComponent implements OnInit {
   ];
 
   submitForm(): void {}
+  filterLearner($event: KeyboardEvent): void {
+    const filter = ($event.target as HTMLTextAreaElement).value.toLowerCase();
+    this.learners = this.learners.filter((learner) => learner.name === filter);
+  }
   constructor() {}
 
   ngOnInit(): void {}

@@ -1,5 +1,10 @@
+<nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+    <input type="text" (keyup)="filterFormer($event)" nz-input placeholder="Recherche" />
+</nz-input-group>
+<ng-template #suffixIconButton>
+    <button nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
+</ng-template>
 <h1>Formateurs</h1>
-
 <div class="former-container">
     <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit]"
         *ngFor="let former of formers">
