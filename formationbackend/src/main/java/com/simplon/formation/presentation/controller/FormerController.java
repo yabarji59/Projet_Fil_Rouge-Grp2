@@ -24,7 +24,6 @@ public class FormerController {
 
     @Autowired
     IFormerService formerService;
-    
     public FormerController(IFormerService formerService){
         this.formerService=formerService;
     }
@@ -34,12 +33,15 @@ public class FormerController {
             if (StringUtils.isEmpty(name)) {
                 return formerService.getAllFormers();
             }
-            return formerService.findFormerByName(name); }
+            return formerService.getAllFormers();   
+         }
 
-         @GetMapping({ "/formers/{name}" })
-         public FormerDto getByName(@PathVariable String formerName) {
-          FormerDto formerDto = formerService.findFormerByName(formerName);
-          return formerDto;
+         @GetMapping({ "/formers/{}" })
+         public FormerDto (@RequestParam(required = true) ) {
+            if (StringUtils.isEmpty(id)) {
+                return formerService.findFormerByName();
+            }
+            return formerService.get
          }
 
          @PostMapping({ "/formers" })
@@ -48,10 +50,10 @@ public class FormerController {
     }
 
     @PutMapping("/formers/{id}")
-	public void update(@PathVariable String formerName, @RequestBody FormerDto formerDto) {
-		FormerDto currentFormerDto = formerService.findFormerByName(formerName);
+	public void update(@PathVariable Long id, @RequestBody FormerDto formerDto) {
+		FormerDto currentFormerDto = formerService.findFormerById(id);
 		if (currentFormerDto != null) {
-			formerService.updateFormer(formerName, formerDto);
+			formerService.updateFormer(id, formerDto);
 		} else {
 			formerService.createFormer(formerDto);
 		}
