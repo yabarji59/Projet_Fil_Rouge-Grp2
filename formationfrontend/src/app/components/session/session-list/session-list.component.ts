@@ -24,6 +24,7 @@ export class SessionListComponent implements OnInit {
       },
     },
   ];
+  submitForm(): void {}
   constructor() {}
 
   ngOnInit(): void {}

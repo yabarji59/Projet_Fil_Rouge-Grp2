@@ -25,6 +25,8 @@ export class FormerListComponent implements OnInit {
       },
     },
   ];
+
+  submitForm(): void {}
   constructor() {}
 
   ngOnInit(): void {}
