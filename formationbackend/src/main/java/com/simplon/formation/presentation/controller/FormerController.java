@@ -24,10 +24,7 @@ public class FormerController {
 
     @Autowired
     IFormerService formerService;
-<<<<<<< HEAD
-=======
     
->>>>>>> develop
     public FormerController(IFormerService formerService){
         this.formerService=formerService;
     }
@@ -37,12 +34,7 @@ public class FormerController {
             if (StringUtils.isEmpty(name)) {
                 return formerService.getAllFormers();
             }
-<<<<<<< HEAD
-            return formerService.getAllFormers();   
-         }
-=======
-            return formerService.findFormerByName(name)  ; }
->>>>>>> develop
+            return formerService.findFormerByName(name); }
 
          @GetMapping({ "/formers/{name}" })
          public FormerDto getByName(@PathVariable String formerName) {
