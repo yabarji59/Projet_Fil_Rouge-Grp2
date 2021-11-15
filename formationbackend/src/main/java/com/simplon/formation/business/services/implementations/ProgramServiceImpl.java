@@ -8,8 +8,6 @@ import com.simplon.formation.business.utils.mappers.ProgramMapper;
 import com.simplon.formation.persistance.dao.IProgramDao;
 import com.simplon.formation.persistance.entities.ProgramDo;
 import com.simplon.formation.presentation.model.ProgramDto;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**

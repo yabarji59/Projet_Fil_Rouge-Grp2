@@ -46,7 +46,7 @@ void updateSession(Long id, SessionDto sessionDto);
  * delete a session
  * @param id
  */
-void deleteProgram(Long id);
+void deleteSession(Long id);
 
 /**
  * assign program to session

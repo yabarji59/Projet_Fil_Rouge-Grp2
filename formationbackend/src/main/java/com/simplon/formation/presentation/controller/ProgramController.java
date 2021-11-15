@@ -75,9 +75,7 @@ public class ProgramController {
 		ProgramDto currentProgramDto = programService.findProgramById(id);
 		if (currentProgramDto != null) {
 			programService.updateProgram(id, programDto);
-		} else {
-			programService.createProgram(programDto);
-		}
+		} 
 
 	}
 	@RequestMapping("/test/welcome")
