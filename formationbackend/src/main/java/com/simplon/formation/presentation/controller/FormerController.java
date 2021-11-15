@@ -68,10 +68,3 @@ public class FormerController {
         formerService.deleteFormer(id);
     }
 }
-
-
-    
- 
-
-
-    

@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.Optional;
 
 import com.simplon.formation.business.services.interfaces.ISessionService;
+import com.simplon.formation.business.utils.mappers.FormerMapper;
 import com.simplon.formation.business.utils.mappers.ProgramMapper;
 import com.simplon.formation.business.utils.mappers.SessionMapper;
 import com.simplon.formation.persistance.dao.IFormerDao;
+import com.simplon.formation.persistance.dao.ILearnerDao;
 import com.simplon.formation.persistance.dao.IProgramDao;
 import com.simplon.formation.persistance.dao.ISessionDao;
 import com.simplon.formation.persistance.entities.*;
@@ -28,8 +30,12 @@ public class SessionServiceImpl implements ISessionService
     private IProgramDao programDao;
     @Autowired
     private IFormerDao formerDao;
-    private SessionMapper sessionmapper = new SessionMapper();
-    private ProgramMapper programmapper = new ProgramMapper();
+    @Autowired
+    private ILearnerDao learnerDao;
+
+    private SessionMapper sessionMapper = new SessionMapper();
+    private ProgramMapper programMapper = new ProgramMapper();
+    private FormerMapper formerMapper = new FormerMapper();
     
     private static final Logger LOGGER = LoggerFactory.getLogger(SessionServiceImpl.class);
 
@@ -37,7 +43,7 @@ public class SessionServiceImpl implements ISessionService
     public List<SessionDto> getAllSessions() {
         LOGGER.info(" session SERVICE getall methode");
         List<SessionDto> allSessions = new ArrayList<SessionDto>();
-		allSessions = sessionmapper.mapToListSessionsDto(sessionDao.findAll());
+		allSessions = sessionMapper.mapToListSessionsDto(sessionDao.findAll());
 		return allSessions;
     }
     
@@ -46,7 +52,7 @@ public class SessionServiceImpl implements ISessionService
     public List<SessionDto> findSessionByTitle(String title) {
         LOGGER.info("session SERVICE getbytitle methode");
         List<SessionDto> allSessions = new ArrayList<SessionDto>();
-		allSessions = sessionmapper.mapToListSessionsDto(sessionDao.findAllByTitleContaining(title));
+		allSessions = sessionMapper.mapToListSessionsDto(sessionDao.findAllByTitleContaining(title));
 		return allSessions;
     }
 
@@ -59,7 +65,7 @@ public class SessionServiceImpl implements ISessionService
         if(sessionDo.isPresent()){
             SessionDo session = new SessionDo();
             session = sessionDo.get();
-            sessionDtoId = sessionmapper.mapToSessionDto(session);
+            sessionDtoId = sessionMapper.mapToSessionDto(session);
             return sessionDtoId;
         }
         throw new RuntimeException("that object does not exist");
@@ -71,7 +77,7 @@ public class SessionServiceImpl implements ISessionService
         if (sessionDto != null ) {
             LOGGER.info("session SERVICE : createsession methode session not null");
         SessionDo session = new SessionDo();
-        session = sessionmapper.mapToSessionDo(sessionDto);
+        session = sessionMapper.mapToSessionDo(sessionDto);
         sessionDao.save(session);
         } else {
             LOGGER.info("session SERVICE : createsession methode session null");
@@ -84,7 +90,9 @@ public class SessionServiceImpl implements ISessionService
             LOGGER.info("session SERVICE : updateSession methode session not null");
         SessionDo sessionDo = sessionDao.findById(id).get();
 		sessionDo.setSessionTitle(sessionDto.getSessionTitle());
-        sessionDo.setSessionProgram(programmapper.mapToProgramDo(sessionDto.getProgramSession()));
+        sessionDo.setSessionProgram(programMapper.mapToProgramDo(sessionDto.getProgramSession()));
+       // sessionDo.setLearners(learners); en attendant learner 
+       sessionDo.setSessionFormer(formerMapper.mapToFormerDo(sessionDto.getFormerSession()));
 		sessionDao.save(sessionDo);
     } else {
         LOGGER.info("session SERVICE : updateSession methode session null");
@@ -93,7 +101,7 @@ public class SessionServiceImpl implements ISessionService
     }
 
     @Override
-    public void deleteProgram(Long id) {
+    public void deleteSession(Long id) {
         this.sessionDao.deleteById(id);
         
     }
@@ -112,7 +120,7 @@ public class SessionServiceImpl implements ISessionService
                 program1.setSession(null);
                 session1.setSessionProgram(program1);
                 sessionDao.save(session1);
-                return;
+               
             }
         }}
 
@@ -123,17 +131,17 @@ public class SessionServiceImpl implements ISessionService
 
         Optional<SessionDo> session = sessionDao.findById(sessionId);
         if (session.isPresent()) {
-            /**Optional<FormerDo> former = formerDao.findById(formerId);
+            Optional<FormerDo> former = formerDao.findById(formerId);
             if (former.isPresent()) {
                 SessionDo session1 = session.get();
                 FormerDo former1 = former.get();
                 former1.setSession(null);
                 session1.setSessionFormer(former1);
-                ;
+                
                 sessionDao.save(session1);
-                return;
-            }*/
-            // en attendant les classes formers
+              
+            }
+            
         }}
 
 
@@ -151,7 +159,7 @@ public class SessionServiceImpl implements ISessionService
                 session1
                 ;
                 sessionDao.save(session1);
-                return;
+                
             }*/
             // en attendant les classes learner
         }}

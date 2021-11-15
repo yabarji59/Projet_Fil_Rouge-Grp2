@@ -5,6 +5,7 @@ import java.util.List;
 import com.simplon.formation.persistance.entities.LearnerDo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -19,6 +20,7 @@ public interface ILearnerDao extends JpaRepository<LearnerDo, Long> {
      * @param title
      * @return List<LearnerDo>
      */
-    List<LearnerDo> findAllByTitleContaining(String title);
+    @Query(value = "SELECT * FROM PROGRAM WHERE learner_name = ?1", nativeQuery = true)
+    List<LearnerDo> findAllByNameContaining(String learnerName);
     
 }
