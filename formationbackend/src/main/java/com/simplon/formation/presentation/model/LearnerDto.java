@@ -24,6 +24,12 @@ public class LearnerDto {
         this.learnerFirstname = learnerFirstname;
     }
 
+    public LearnerDto(String learnerName, String learnerFirstname, SessionDto learnersession) {
+        this.learnerName = learnerName;
+        this.learnerFirstname = learnerFirstname;
+        this.learnerSession = learnersession;
+    }
+
     public LearnerDto(Long learnerId, String learnerName, String learnerFirstname, SessionDto learnersession) {
         this.learnerId = learnerId;
         this.learnerName = learnerName;
