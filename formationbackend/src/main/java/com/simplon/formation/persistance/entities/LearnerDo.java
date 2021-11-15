@@ -2,9 +2,11 @@ package com.simplon.formation.persistance.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -26,7 +28,8 @@ public class LearnerDo {
     @Column(name="learner_firstname")
     private String learnerFirstname;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = SessionDo.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "learner_id", nullable = false)
     private SessionDo learnerSession;
     
 
