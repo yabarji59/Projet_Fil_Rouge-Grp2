@@ -43,7 +43,11 @@ public class FormerController {
              return formers;
             
          }
-        
+         @GetMapping({ "/formers/{id}" })
+         public FormerDto findFormerById(@PathVariable Long id) {
+             FormerDto formerDto = formerService.findFormerById(id);
+             return formerDto;
+         }
 
          @PostMapping({ "/formers" })
 	public void save(@RequestBody FormerDto formerDto) {
