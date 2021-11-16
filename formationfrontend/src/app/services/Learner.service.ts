@@ -43,7 +43,7 @@ export class LearnerService {
    * @param id 
    * @returns http get request
    */
-   find(id: string): Observable<EntityArrayResponseType> {
+   find(id: string): Observable<EntityResponseType> {
     return this.http.get<Learner>(`${baseUrl}/${id}`, {
       observe: 'response',
     });
@@ -55,7 +55,7 @@ export class LearnerService {
    * @param data 
    * @returns http post request
    */
-  createOrUpdate(data: Learner): Observable<EntityArrayResponseType> {
+  createOrUpdate(data: Learner): Observable<EntityResponseType> {
     return this.http.post(baseUrl, data,
       {
         observe: 'response',
@@ -68,8 +68,8 @@ export class LearnerService {
    * @param id 
    * @returns http delete request
    */
-  delete(id: string): Observable<EntityArrayResponseType> {
-    return this.http.delete(`${baseUrl}/${id}`
+  delete(id: string): Observable<HttpResponse<any>> {
+    return this.http.delete(`${baseUrl}/${id}`,
     {
       observe: 'response',
     });

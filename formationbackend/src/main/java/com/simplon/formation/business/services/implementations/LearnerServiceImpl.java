@@ -56,7 +56,6 @@ public class LearnerServiceImpl implements ILearnerService{
     public void createLearner(LearnerDto learnerDto) {
         LearnerDo learnerDo = new LearnerDo();
         learnerDo = learnerMapper.mapToLearnerDo(learnerDto);
-
         learnerDao.save(learnerDo);  
     }
 
