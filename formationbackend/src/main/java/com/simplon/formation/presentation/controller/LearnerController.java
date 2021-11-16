@@ -33,11 +33,8 @@ public class LearnerController {
      * @return list of all learners
      */
     @GetMapping({ "/learners" })
-    public List<LearnerDto> getAllLearners (@RequestParam(required = false) String learnerName) {
-        if (StringUtils.isEmpty(learnerName)) {
-            return learnerService.getAllLearners();
-        }
-        return learnerService.findAllLearnersByName(learnerName);
+    public List<LearnerDto> getAllLearners () {
+        return learnerService.getAllLearners();
     }
 
     /**
@@ -47,7 +44,7 @@ public class LearnerController {
      * @return list of learners
      */
     @GetMapping({ "/learners?name={name}" })
-	public List<LearnerDto> getLearnersByName (String name) {
+	public List<LearnerDto> getLearnersByName (@RequestParam(value="name") String name) {
 		List<LearnerDto> liste = learnerService.findAllLearnersByName(name);
 		return liste;
 	}
