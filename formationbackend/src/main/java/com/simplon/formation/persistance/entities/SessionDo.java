@@ -34,13 +34,13 @@ public class SessionDo {
 	private String SessionTitle;
     
     
-    @OneToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "program_id", nullable = true)
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "program_id", nullable = false)
     private ProgramDo SessionProgram;
 
 
-    @OneToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "former_id", nullable = true)
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "former_id", nullable = false)
     private FormerDo SessionFormer;
 
 
