@@ -1,7 +1,10 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Learner } from "../model/Learner.model";
+
+type EntityResponseType = HttpResponse<Learner>;
+type EntityArrayResponseType = HttpResponse<Learner[]>;
 
 const baseUrl = "http://localhost:8080/api/learners";
 
@@ -16,8 +19,10 @@ export class LearnerService {
    * 
    * @returns http get request
    */
-  list(): Observable<any> {
-    return this.http.get(baseUrl);
+  findAll(): Observable<EntityArrayResponseType> {
+    return this.http.get<Learner[]>(baseUrl, {
+      observe: 'response',
+    });
   }
 
   /**
@@ -26,8 +31,10 @@ export class LearnerService {
    * @param name 
    * @returns http get request
    */
-  findByName(name: string): Observable<any> {
-    return this.http.get(`${baseUrl}?name=${name}`);
+  findByName(name: string): Observable<EntityArrayResponseType> {
+    return this.http.get<Learner[]>(`${baseUrl}?name=${name}`, {
+      observe: 'response',
+    });
   }
 
   /**
@@ -36,8 +43,10 @@ export class LearnerService {
    * @param id 
    * @returns http get request
    */
-  get(id: any): Observable<any> {
-    return this.http.get(`${baseUrl}/${id}`);
+   find(id: string): Observable<EntityArrayResponseType> {
+    return this.http.get<Learner>(`${baseUrl}/${id}`, {
+      observe: 'response',
+    });
   }
 
   /**
@@ -46,8 +55,11 @@ export class LearnerService {
    * @param data 
    * @returns http post request
    */
-  createOrUpdate(data: Learner): Observable<any> {
-    return this.http.post(baseUrl, data);
+  createOrUpdate(data: Learner): Observable<EntityArrayResponseType> {
+    return this.http.post(baseUrl, data,
+      {
+        observe: 'response',
+      });
   }
 
   /**
@@ -56,8 +68,11 @@ export class LearnerService {
    * @param id 
    * @returns http delete request
    */
-  delete(id: string): Observable<any> {
-    return this.http.delete(`${baseUrl}/${id}`);
+  delete(id: string): Observable<EntityArrayResponseType> {
+    return this.http.delete(`${baseUrl}/${id}`
+    {
+      observe: 'response',
+    });
   }
 
 
