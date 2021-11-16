@@ -9,7 +9,7 @@
     <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit]"
         *ngFor="let learner of learners">
         <nz-card-meta nzTitle="#{{learner?.learnerId }} {{learner.learnerFirstname}} {{learner.learnerName}} "
-            nzDescription="{{learner.learnerSession.sessionTitle}}" [nzAvatar]="avatarTemplate">
+            nzDescription="{{learner.learnerSession?.sessionTitle}}" [nzAvatar]="avatarTemplate">
         </nz-card-meta>
     </nz-card>
     <ng-template #avatarTemplate>
