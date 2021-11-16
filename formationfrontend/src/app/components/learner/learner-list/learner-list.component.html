@@ -8,8 +8,8 @@
 <div class="learner-container">
     <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit]"
         *ngFor="let learner of learners">
-        <nz-card-meta nzTitle="#{{learner?.id }} {{learner.name}} {{learner.surname}}"
-            nzDescription="{{learner.session.name}}" [nzAvatar]="avatarTemplate">
+        <nz-card-meta nzTitle="#{{learner?.learnerId }} {{learner.learnerFirstname}} {{learner.learnerName}} "
+            nzDescription="{{learner.learnerSession}}" [nzAvatar]="avatarTemplate">
         </nz-card-meta>
     </nz-card>
     <ng-template #avatarTemplate>
@@ -22,7 +22,7 @@
         <i nz-icon nzType="delete"></i>
     </ng-template>
     <ng-template #actionEdit>
-        <a routerLink="/learner-edit/{{learner?.id}}">
+        <a routerLink="/learner-edit/{{learner?.learnerId}}">
             <i nz-icon nzType="edit"></i>
         </a>
 
