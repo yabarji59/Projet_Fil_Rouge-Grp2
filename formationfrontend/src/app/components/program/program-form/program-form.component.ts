@@ -1,5 +1,9 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Program } from 'src/app/model/Program.model';
+import { ProgramService } from 'src/app/services/Program.service';
 
 @Component({
   selector: 'app-program-form',
@@ -11,10 +15,15 @@ export class ProgramFormComponent implements OnInit {
   inputValue?: string;
 
   submitForm(): void {
-    console.log('submit', this.validateForm);
-    console.log(this.validateForm.value);
     if (this.validateForm.valid) {
       console.log('form valid');
+      this.programService
+        .create(this.validateForm.value)
+        .subscribe((res: HttpResponse<Program>) => {
+          if (res.status === 200) {
+            this.router.navigate(['/program']);
+          }
+        });
     } else {
       Object.values(this.validateForm.controls).forEach((control) => {
         if (control.invalid) {
@@ -25,12 +34,16 @@ export class ProgramFormComponent implements OnInit {
     }
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private programService: ProgramService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      surname: [null, [Validators.required]],
-      description: [null, [Validators.required]],
+      programDescription: [null, [Validators.required]],
+      programTitle: [null, [Validators.required]],
     });
   }
 }

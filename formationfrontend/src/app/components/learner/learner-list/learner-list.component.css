@@ -19,3 +19,8 @@
   margin-bottom: 2em;
   margin-right: 2em;
 }
+
+:host ::ng-deep .ant-input-group-wrapper {
+  width: 30%;
+  float: right;
+}
