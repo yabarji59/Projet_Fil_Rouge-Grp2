@@ -30,8 +30,7 @@ public class SessionServiceImpl implements ISessionService
     private IProgramDao programDao;
     @Autowired
     private IFormerDao formerDao;
-    @Autowired
-    private ILearnerDao learnerDao;
+
 
     private SessionMapper sessionMapper = new SessionMapper();
     private ProgramMapper programMapper = new ProgramMapper();
