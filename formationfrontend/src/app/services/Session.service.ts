@@ -22,7 +22,7 @@ export class SessionService {
 
   update(session: Session): Observable<EntityResponseType> {
     return this.http.put<Session>(
-      `${this.resourceUrl}/${session.SessionId}`,
+      `${this.resourceUrl}/${session.sessionId}`,
       session,
       {
         observe: 'response',
