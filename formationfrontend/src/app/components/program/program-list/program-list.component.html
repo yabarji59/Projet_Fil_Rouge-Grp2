@@ -6,31 +6,35 @@
 </ng-template>
 <h1>Programmes</h1>
 <div class="program-container">
-    <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit,actionEllipsis]"
-        *ngFor="let program of programs">
-        <nz-card-meta nzTitle="#{{program?.programId }} {{program?.programTitle}}"
-            nzDescription="{{program.programDescription}}" [nzAvatar]="avatarTemplate">
-        </nz-card-meta>
-    </nz-card>
-    <ng-template #avatarTemplate>
-        <nz-avatar nzIcon="user" style="background-color:#87d068;"></nz-avatar>
-    </ng-template>
-    <ng-template #coverTemplate>
-        <img alt="example" src="assets/img/java2.jpg" />
-    </ng-template>
-    <ng-template #actionDelete>
-        <i nz-icon nzType="delete"></i>
-    </ng-template>
-    <ng-template #actionEdit>
-        <a routerLink="/program-edit/{{program?.programId}}">
-            <i nz-icon nzType="edit"></i>
-        </a>
-    </ng-template>
-    <ng-template #actionEllipsis>
-        <a routerLink="/program-detail/{{program?.programId}}">
-            <i nz-icon nzType="ellipsis"></i>
-        </a>
-    </ng-template>
+    <div *ngFor="let program of programs">
+        <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit,actionEllipsis]">
+            <nz-card-meta nzTitle="#{{program?.programId }} {{program?.programTitle}}"
+                nzDescription="{{program.programDescription}}" [nzAvatar]="avatarTemplate">
+            </nz-card-meta>
+        </nz-card>
+        <ng-template #avatarTemplate>
+            <nz-avatar nzIcon="user" style="background-color:#87d068;"></nz-avatar>
+        </ng-template>
+        <ng-template #coverTemplate>
+            <img alt="example" src="assets/img/java2.jpg" />
+        </ng-template>
+        <ng-template #actionDelete>
+            <a nz-popconfirm nzPopconfirmTitle="Voulez vous vraiment supprimer {{program?.programTitle}} ?"
+                nzPopconfirmPlacement="bottom" (nzOnConfirm)="delete(program?.programId)"> <i nz-icon
+                    nzType="delete"></i> </a>
+        </ng-template>
+        <ng-template #actionEdit>
+            <a routerLink="/program-edit/{{program?.programId}}">
+                <i nz-icon nzType="edit"></i>
+            </a>
+        </ng-template>
+        <ng-template #actionEllipsis>
+            <a routerLink="/program-detail/{{program?.programId}}">
+                <i nz-icon nzType="ellipsis"></i>
+            </a>
+        </ng-template>
+    </div>
+
 </div>
 <button class="button-add" nz-button nzType="primary" nzShape="circle"><i nz-icon nzType="appstore-add"
         nzTheme="outline"><a class="button-add" routerLink="/program-edit"></a></i></button>

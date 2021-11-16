@@ -19,11 +19,24 @@ export class ProgramListComponent implements OnInit {
     );
   }
   constructor(private programService: ProgramService) {
+    this.getPrograms();
+  }
+
+  ngOnInit(): void {}
+
+  getPrograms(): void {
     this.programService.findAll().subscribe((res: HttpResponse<Program[]>) => {
       this.programs = res.body;
       this.programsOriginal = this.programs;
     });
   }
 
-  ngOnInit(): void {}
+  delete(id: string): void {
+    this.programService.delete(id).subscribe((res: HttpResponse<any>) => {
+      console.log(res.status);
+      if (res.status === 200) {
+        this.getPrograms();
+      }
+    });
+  }
 }
