@@ -33,8 +33,11 @@ public class LearnerController {
      * @return list of all learners
      */
     @GetMapping({ "/learners" })
-    public List<LearnerDto> getAllLearners () {
-        return learnerService.getAllLearners();
+    public List<LearnerDto> getAllLearners (@RequestParam(required = false) String name) {
+        if (StringUtils.isEmpty(name)) {
+			return learnerService.getAllLearners();
+		}
+		return learnerService.findAllLearnersByName(name);
     }
 
     /**
@@ -45,8 +48,8 @@ public class LearnerController {
      */
     @GetMapping({ "/learners?name={name}" })
 	public List<LearnerDto> getLearnersByName (@RequestParam(value="name") String name) {
-		List<LearnerDto> liste = learnerService.findAllLearnersByName(name);
-		return liste;
+		List<LearnerDto> list = learnerService.findAllLearnersByName(name);
+		return list;
 	}
 
     /**
@@ -62,29 +65,18 @@ public class LearnerController {
 	}
 
     /**
-     * Create a new learner
+     * Update a learner or create a new one if the id is null
      * 
      * @param learnerDto
      */
     @PostMapping({ "/learners" })
-	public void createLearnerDto(@RequestBody LearnerDto learnerDto) {
-		learnerService.createLearner(learnerDto);
-	}
-
-    /**
-     * Update a learner or create a new one if the id is null
-     * 
-     * @param id
-     * @param learnerDto
-     */
-    @PutMapping({ "/learners/{id} "})
-	public void updateLearnerDto(@PathVariable Long id, @RequestBody LearnerDto learnerDto) {
-		LearnerDto currentLearnerDto = learnerService.findLearnerById(id);
-		if (currentLearnerDto != null) {
-			learnerService.updateLearner(id, learnerDto);
-		} else {
-			learnerService.createLearner(learnerDto);
-		}
+	public void createOrUpdateLearnerDto(@RequestBody LearnerDto learnerDto) {
+        Long id = learnerDto.getLearnerId();
+        if (id != null) {
+            learnerService.updateLearner(id, learnerDto);
+        } else {
+            learnerService.createLearner(learnerDto);
+        }
 	}
 
     /**
