@@ -9,9 +9,8 @@
 <div class="session-container">
     <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit,actionEllipsis]"
         *ngFor="let session of sessions">
-        <nz-card-meta nzTitle="#{{session?.sessionId }} {{session?.sessionTitle}}"
-            nzDescription=" {{session.formerSession.formerName}} {{session.formerSession.formerLastname}} {{session.programSession.programTitle}} {{session.learnersSession}}"
-            [nzAvatar]="avatarTemplate">
+        <nz-card-meta nzTitle="#{{session?.sessionId }} {{session?.sessionTitle}}" nzDescription=" {{session.formerSession.formerName}} {{session.formerSession.formerLastname}}
+            {{session.programSession.programTitle}} {{session.learnersSession}}" [nzAvatar]="avatarTemplate">
         </nz-card-meta>
     </nz-card>
     <ng-template #avatarTemplate>
