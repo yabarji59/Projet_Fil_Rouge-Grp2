@@ -1,37 +1,47 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { Former } from "../model/Former.model";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Former } from '../model/Former.model';
 
-const baseUrl = "http://localhost:8080/api/formers";
+type EntityResponseType = HttpResponse<Former>;
+type EntityArrayResponseType = HttpResponse<Former[]>;
 
 @Injectable({
-    providedIn: "root",
-  })
+  providedIn: 'root',
+})
   export class FormerService {
-    constructor(private http: HttpClient) {}
+    public resourceUrl = `http://localhost:8080/api/programs`;
 
-    list(): Observable<any> {
-        return this.http.get(baseUrl);
-    }
+  constructor(private http: HttpClient) {}
 
-    findByName(name: string): Observable<any> {
-        return this.http.get(`${baseUrl}?name=${name}`);
+  create(former: Former): Observable<EntityResponseType> {
+    return this.http.post<Former>(this.resourceUrl, former, {
+      observe: 'response',
+    });
+  }
+
+  update(former: Former): Observable<EntityResponseType> {
+    return this.http.put<Former>(
+      `${this.resourceUrl}/${former.formerId}`,
+      former,
+      {
+        observe: 'response',
       }
+    );
+  }
 
-    get(id: any): Observable<any> {
-        return this.http.get(`${baseUrl}/${id}`);
-      }
+  findAll(): Observable<EntityArrayResponseType> {
+    return this.http.get<Former[]>(this.resourceUrl, {
+      observe: 'response',
+    });
+  }
 
-      create(data: Former): Observable<any> {
-        return this.http.post(baseUrl, data);
-      }
+  delete(id: string): Observable<HttpResponse<any>> {
+    return this.http.delete<any>(`${this.resourceUrl}/${id}`, {
+      observe: 'response',
+    });
+  }
 
-      update(id: string, data: Former): Observable<any> {
-        return this.http.put(`${baseUrl}/${id}`, data);
-      }
 
-      delete(id: string): Observable<any> {
-        return this.http.delete(`${baseUrl}/${id}`);
-      }
-  }  
+
+  }
