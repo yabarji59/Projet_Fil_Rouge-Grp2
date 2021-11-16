@@ -1,6 +1,6 @@
 export class Learner {
-    learnerId?: any;
-    learnerName?: string;
-    learnerFirstname?: string;
-    learnerSession?: Session;
-  }
+  learnerId?: any;
+  learnerName?: string;
+  learnerFirstname?: string;
+  learnerSession?: Session;
+}
