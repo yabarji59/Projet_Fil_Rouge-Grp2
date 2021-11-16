@@ -22,6 +22,7 @@ export class LearnerListComponent implements OnInit {
     this.learnerService.findAll().subscribe((res: HttpResponse<Learner[]>) => {
       this.learners = res.body;
       this.learnersOriginal = this.learners;
+      console.log(this.learners);
     });
   }
   ngOnInit(): void {}
