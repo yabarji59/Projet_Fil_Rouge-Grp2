@@ -8,7 +8,7 @@ import com.simplon.formation.presentation.model.LearnerDto;
 
 public class LearnerMapper {
 
-    //private SessionMapper sessionMapper = new SessionMapper();
+    private SessionMapper sessionMapper = new SessionMapper();
     
     /**
      * Map a learnerDo to a learnerDto
@@ -24,7 +24,7 @@ public class LearnerMapper {
         learnerDto.setLearnerId(learnerDo.getLearnerId());
         learnerDto.setLearnerName(learnerDo.getLearnerName());
         learnerDto.setLearnerFirstname(learnerDo.getLearnerFirstname());
-      //  learnerDto.setLearnerSession(sessionMapper.mapToSessionDto(learnerDo.getLearnerSession()));
+        learnerDto.setLearnerSession(sessionMapper.mapToSessionDto(learnerDo.getLearnerSession()));
         return learnerDto;
     }
 
@@ -43,7 +43,7 @@ public class LearnerMapper {
         learnerDo.setLearnerId(learnerDto.getLearnerId());}
         learnerDo.setLearnerName(learnerDto.getLearnerName());
         learnerDo.setLearnerFirstname(learnerDto.getLearnerFirstname());
-      //  learnerDo.setLearnerSession(sessionMapper.mapToSessionDo(learnerDto.getLearnerSession()));
+        learnerDo.setLearnerSession(sessionMapper.mapToSessionDo(learnerDto.getLearnerSession()));
         return learnerDo;
     }
 
