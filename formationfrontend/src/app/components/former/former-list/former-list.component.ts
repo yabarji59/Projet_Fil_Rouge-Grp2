@@ -1,4 +1,7 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Former } from 'src/app/model/Former.model';
+import { FormerService } from 'src/app/services/Former.service';
 
 @Component({
   selector: 'app-former-list',
@@ -6,31 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./former-list.component.css'],
 })
 export class FormerListComponent implements OnInit {
-  formers = [
-    {
-      id: '1',
-      name: 'Yassen',
-      surname: 'Abarji',
-      session: {
-        name: 'POEI JAVA',
-        learners: {
-          name: 'Wendy',
-          surname: 'Vandenberghe',
-        },
-      },
-      program: {
-        title: 'programme java angular',
-        description:
-          'ceci est un program java fort interessant Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eleifend velit nulla, non maximus erat dictum in. Donec auctor porta dolor, eu egestas mi facilisis vitae. Maecenas in imperdiet eros. Ut nec eros neque. Phasellus dictum dolor magna, nec scelerisque nibh rhoncus non. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget magna a sem maximus vulputate. Proin quam massa, eleifend eu ultricies luctus, tristique in neque.',
-      },
-    },
-  ];
+  formers: Former[];
+  formersOriginal: Former[];
 
   filterFormer($event: KeyboardEvent): void {
     const filter = ($event.target as HTMLTextAreaElement).value.toLowerCase();
-    this.formers = this.formers.filter((former) => former.name === filter);
+    this.formers = this.formersOriginal.filter((former) =>
+      former.formerName.toLowerCase().includes(filter)
+    );
   }
-  constructor() {}
-
+  constructor(private formerService: FormerService) {
+    this.formerService.findAll().subscribe((res: HttpResponse<Former[]>) => {
+      this.formers = res.body;
+      this.formersOriginal = this.formers;
+      console.log(this.formers);
+    });
+  }
   ngOnInit(): void {}
 }

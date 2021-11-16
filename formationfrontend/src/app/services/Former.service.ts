@@ -9,8 +9,8 @@ type EntityArrayResponseType = HttpResponse<Former[]>;
 @Injectable({
   providedIn: 'root',
 })
-  export class FormerService {
-    public resourceUrl = `http://localhost:8080/api/programs`;
+export class FormerService {
+  public resourceUrl = `http://localhost:8080/api/formers`;
 
   constructor(private http: HttpClient) {}
 
@@ -41,7 +41,4 @@ type EntityArrayResponseType = HttpResponse<Former[]>;
       observe: 'response',
     });
   }
-
-
-
-  }
+}

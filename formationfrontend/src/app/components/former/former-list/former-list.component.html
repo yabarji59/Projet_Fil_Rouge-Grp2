@@ -8,8 +8,8 @@
 <div class="former-container">
     <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit]"
         *ngFor="let former of formers">
-        <nz-card-meta nzTitle="#{{former?.id }} {{former.name}} {{former.surname}}"
-            nzDescription="{{former.session.name}}" [nzAvatar]="avatarTemplate">
+        <nz-card-meta nzTitle="#{{former?.formerId }} {{former.formerName}} {{former.formerLastname}}"
+            nzDescription="{{former.formerSession}}" [nzAvatar]="avatarTemplate">
         </nz-card-meta>
     </nz-card>
     <ng-template #avatarTemplate>
@@ -22,7 +22,7 @@
         <i nz-icon nzType="delete"></i>
     </ng-template>
     <ng-template #actionEdit>
-        <a routerLink="/former-edit/{{former?.id}}">
+        <a routerLink="/former-edit/{{former?.formerId}}">
             <i nz-icon nzType="edit"></i>
         </a>
     </ng-template>
