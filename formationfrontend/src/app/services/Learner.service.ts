@@ -41,24 +41,13 @@ export class LearnerService {
   }
 
   /**
-   * Create a new learner
+   * Create a new learner or Update
    * 
    * @param data 
    * @returns http post request
    */
-  create(data: Learner): Observable<any> {
+  createOrUpdate(data: Learner): Observable<any> {
     return this.http.post(baseUrl, data);
-  }
-
-  /**
-   * Update a learner
-   * 
-   * @param id 
-   * @param data 
-   * @returns http put request
-   */
-  update(id: string, data: Learner): Observable<any> {
-    return this.http.put(`${baseUrl}/${id}`, data);
   }
 
   /**

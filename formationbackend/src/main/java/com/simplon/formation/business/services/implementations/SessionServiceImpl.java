@@ -145,24 +145,5 @@ public class SessionServiceImpl implements ISessionService
         }}
 
 
-    @Override
-    public void assignLearnertoSession(Long learnerId, Long sessionId) {
-        LOGGER.info("session SERVICE :assignLearnertoSession");
-
-        Optional<SessionDo> session = sessionDao.findById(sessionId);
-        if (session.isPresent()) {
-            /**Optional<LearnerDo> learner = learnerDao.findById(learnerId);
-            if (learner.isPresent()) {
-                SessionDo session1 = session.get();
-                LearnerDo learner1 = learner.get();
-                former1.setSession(null);
-                session1
-                ;
-                sessionDao.save(session1);
-                
-            }*/
-            // en attendant les classes learner
-        }}
-    
-    
-}
+   
+    }

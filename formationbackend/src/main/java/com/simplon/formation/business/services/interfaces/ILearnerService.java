@@ -50,5 +50,12 @@ public interface ILearnerService {
      * @param learnerId
      */
     void deleteLearner(Long learnerId);
+    /**
+ * assign learner to session
+ * @param learnerId
+ * @param sessionId
+ */
+
+    void assignLearnertoSession(Long learnerId, Long sessionId);
 
 }

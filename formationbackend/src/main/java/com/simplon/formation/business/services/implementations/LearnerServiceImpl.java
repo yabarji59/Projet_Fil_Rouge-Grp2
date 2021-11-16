@@ -7,7 +7,9 @@ import java.util.Optional;
 import com.simplon.formation.business.services.interfaces.ILearnerService;
 import com.simplon.formation.business.utils.mappers.LearnerMapper;
 import com.simplon.formation.persistance.dao.ILearnerDao;
+import com.simplon.formation.persistance.dao.ISessionDao;
 import com.simplon.formation.persistance.entities.LearnerDo;
+import com.simplon.formation.persistance.entities.SessionDo;
 import com.simplon.formation.presentation.model.LearnerDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +20,11 @@ public class LearnerServiceImpl implements ILearnerService{
 
     @Autowired
     private ILearnerDao learnerDao;
+    @Autowired
+    private ISessionDao sessionDao;
 
     private LearnerMapper learnerMapper = new LearnerMapper();
+    
 
     @Override
     public List<LearnerDto> getAllLearners() {
@@ -54,6 +59,7 @@ public class LearnerServiceImpl implements ILearnerService{
     public void createLearner(LearnerDto learnerDto) {
         LearnerDo learnerDo = new LearnerDo();
         learnerDo = learnerMapper.mapToLearnerDo(learnerDto);
+
         learnerDao.save(learnerDo);  
     }
 
@@ -71,5 +77,22 @@ public class LearnerServiceImpl implements ILearnerService{
     public void deleteLearner(Long learnerId) {
 		learnerDao.deleteById(learnerId);
     }
+ public void assignLearnertoSession(Long learnerId, Long sessionId) {
 
+        Optional<SessionDo> session = sessionDao.findById(sessionId);
+        if (session.isPresent()) {
+            Optional<LearnerDo> learner = learnerDao.findById(learnerId);
+            if (learner.isPresent()) {
+                SessionDo session1 = session.get();
+                LearnerDo learner1 = learner.get();
+                learner1.setLearnerSession(session1);
+                List<LearnerDo> listelearners = session1.getLearners();
+                listelearners.add(learner1);
+                sessionDao.save(session1);
+                
+            }}
+    
+    
+        
+    }
 }
