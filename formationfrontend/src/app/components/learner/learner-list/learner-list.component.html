@@ -6,28 +6,29 @@
 </ng-template>
 <h1>Apprenants</h1>
 <div class="learner-container">
-    <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit]"
-        *ngFor="let learner of learners">
-        <nz-card-meta nzTitle="#{{learner?.learnerId }} {{learner.learnerFirstname}} {{learner.learnerName}} "
-            nzDescription="{{learner.learnerSession?.sessionTitle}}" [nzAvatar]="avatarTemplate">
-        </nz-card-meta>
-    </nz-card>
-    <ng-template #avatarTemplate>
-        <nz-avatar nzIcon="user" style="background-color:#87d068;"></nz-avatar>
-    </ng-template>
-    <ng-template #coverTemplate>
-        <img alt="example" src="assets/img/Apprenantes.jpg" />
-    </ng-template>
-    <ng-template #actionDelete>
-        <i nz-icon nzType="delete"></i>
-    </ng-template>
-    <ng-template #actionEdit>
-        <a routerLink="/learner-edit/{{learner?.learnerId}}">
-            <i nz-icon nzType="edit"></i>
-        </a>
-
-    </ng-template>
-
+    <div *ngFor="let learner of learners">
+        <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit]">
+            <nz-card-meta nzTitle="#{{learner?.learnerId }} {{learner.learnerFirstname}} {{learner.learnerName}} "
+                nzDescription="{{learner.learnerSession?.sessionTitle}}" [nzAvatar]="avatarTemplate">
+            </nz-card-meta>
+        </nz-card>
+        <ng-template #avatarTemplate>
+            <nz-avatar nzIcon="user" style="background-color:#87d068;"></nz-avatar>
+        </ng-template>
+        <ng-template #coverTemplate>
+            <img alt="example" src="assets/img/Apprenantes.jpg" />
+        </ng-template>
+        <ng-template #actionDelete>
+            <a nz-popconfirm nzPopconfirmTitle="Voulez vous vraiment supprimer {{learner?.learnerFirstname}} {{learner?.learnerName}} ?"
+                nzPopconfirmPlacement="bottom" (nzOnConfirm)="delete(learner?.learnerId)"> <i nz-icon
+                    nzType="delete"></i> </a>
+        </ng-template>
+        <ng-template #actionEdit>
+            <a routerLink="/learner-edit/{{learner?.learnerId}}">
+                <i nz-icon nzType="edit"></i>
+            </a>
+        </ng-template>
+    </div>
 </div>
 <button class="button-add" nz-button nzType="primary" nzShape="circle"><i nz-icon nzType="appstore-add"
         nzTheme="outline"><a class="button-add" routerLink="/learner-edit"></a></i></button>

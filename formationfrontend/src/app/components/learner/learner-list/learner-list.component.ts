@@ -19,11 +19,24 @@ export class LearnerListComponent implements OnInit {
     );
   }
   constructor(private learnerService: LearnerService) {
+    this.getLearners();
+  }
+
+  ngOnInit(): void {}
+
+  getLearners(): void {
     this.learnerService.findAll().subscribe((res: HttpResponse<Learner[]>) => {
       this.learners = res.body;
       this.learnersOriginal = this.learners;
-      console.log(this.learners);
     });
   }
-  ngOnInit(): void {}
+
+  delete(id: string): void {
+    this.learnerService.delete(id).subscribe((res: HttpResponse<any>) => {
+      console.log(res.status);
+      if (res.status === 200) {
+        this.getLearners();
+      }
+    });
+  }
 }

@@ -1,29 +1,31 @@
-<h1>Apprenants</h1>
+<h1>{{ editMode ? 'Editer un ' : 'Ajouter un '}} Apprenant</h1>
 <div class="gestion-formation-form-container">
     <form nz-form [formGroup]="validateForm" class="gestion-formation-form">
         <nz-form-item>
             <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un nom valide!">
                 <nz-input-group>
-                    <input type="text" nz-input formControlName="surname" placeholder="Nom" />
+                    <input type="text" nz-input formControlName="learnerName" placeholder="Nom" />
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
             <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un Prénom valide!">
                 <nz-input-group>
-                    <input type="text" nz-input formControlName="name" placeholder="Prénom" />
+                    <input type="text" nz-input formControlName="learnerFirstname" placeholder="Prénom" />
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>
+
         <nz-form-item>
             <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un nom valide!">
-                <nz-select formControlName="sessions" nzPlaceHolder="sessions">
-                    <nz-option nzValue="POEI Java" nzLabel="POEI Java"></nz-option>
-                    <nz-option nzValue="POEI Angular" nzLabel="POEI Angular"></nz-option>
+                <nz-select formControlName="sessionTitle" nzPlaceHolder="Sessions">
+                    <div *ngFor="let session of sessions">
+                        <nz-option nzValue="{{session.sessionTitle}}"
+                            nzLabel="{{session.sessionTitle}}"></nz-option>
+                    </div>
                 </nz-select>
             </nz-form-control>
         </nz-form-item>
-
     </form>
 </div>
 <div class=" gestion-formation-button-submit">
