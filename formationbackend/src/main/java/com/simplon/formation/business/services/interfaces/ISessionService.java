@@ -1,6 +1,8 @@
 package com.simplon.formation.business.services.interfaces;
 
 import java.util.List;
+
+import com.simplon.formation.presentation.model.LearnerDto;
 import com.simplon.formation.presentation.model.SessionDto;
 
 
@@ -62,6 +64,6 @@ public void assignProgramtoSession( Long programId,Long sessionId);
  */
 public void assignFormertoSession( Long formerId,Long sessionId);
 
-
+List<LearnerDto> findLearnersBySession(Long id);
 
 }

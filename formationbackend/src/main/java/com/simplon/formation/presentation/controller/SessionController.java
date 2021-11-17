@@ -3,6 +3,7 @@ package com.simplon.formation.presentation.controller;
 import java.util.List;
 
 import com.simplon.formation.business.services.interfaces.ISessionService;
+import com.simplon.formation.presentation.model.LearnerDto;
 import com.simplon.formation.presentation.model.SessionDto;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,18 @@ public class SessionController {
 
 
 /**
+ * get learners of sessions
+ * @param id
+ * @return
+ */
+        @GetMapping({ "/sessions/learners/{id}" })
+        public List<LearnerDto> getLearners(@PathVariable Long id) {
+           
+                return sessionService.findLearnersBySession(id);
+            
+            }
+    
+/**
  * 
  * @param id
  * @return sessionDto by id
@@ -49,6 +62,10 @@ public class SessionController {
             SessionDto sessionDto = sessionService.findSessionById(id);
             return sessionDto;
         }
+
+
+
+
 
 /**
  * create new session
