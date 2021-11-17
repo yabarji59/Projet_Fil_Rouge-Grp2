@@ -30,7 +30,7 @@ export class SessionDetailComponent implements OnInit {
           this.session = res.body;
           
         });
-        
+        console.log();
         this.sessionService
         .findLearners(this.paramId).subscribe((res: HttpResponse<Learner[]>) => {
           
