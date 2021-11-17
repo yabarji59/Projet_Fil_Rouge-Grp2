@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Session } from '../model/Session.model';
+import { Learner } from '../model/Learner.model';
 
 type EntityResponseType = HttpResponse<Session>;
 type EntityArrayResponseType = HttpResponse<Session[]>;
-
+type EntityArrayResponseTypeLearner = HttpResponse<Learner[]>;
 @Injectable({
   providedIn: 'root',
 })
@@ -38,6 +39,12 @@ export class SessionService {
 
   findAll(): Observable<EntityArrayResponseType> {
     return this.http.get<Session[]>(this.resourceUrl, {
+      observe: 'response',
+    });
+  }
+
+  findLearners(id: string): Observable<EntityArrayResponseTypeLearner> {
+    return this.http.get<Learner[]>(`${this.resourceUrl}/learners/${id}`, {
       observe: 'response',
     });
   }

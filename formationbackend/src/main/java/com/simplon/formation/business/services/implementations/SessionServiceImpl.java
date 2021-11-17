@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import com.simplon.formation.business.services.interfaces.ISessionService;
 import com.simplon.formation.business.utils.mappers.FormerMapper;
+import com.simplon.formation.business.utils.mappers.LearnerMapper;
 import com.simplon.formation.business.utils.mappers.ProgramMapper;
 import com.simplon.formation.business.utils.mappers.SessionMapper;
 import com.simplon.formation.persistance.dao.IFormerDao;
@@ -13,6 +14,7 @@ import com.simplon.formation.persistance.dao.ILearnerDao;
 import com.simplon.formation.persistance.dao.IProgramDao;
 import com.simplon.formation.persistance.dao.ISessionDao;
 import com.simplon.formation.persistance.entities.*;
+import com.simplon.formation.presentation.model.LearnerDto;
 import com.simplon.formation.presentation.model.SessionDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,11 +32,13 @@ public class SessionServiceImpl implements ISessionService
     private IProgramDao programDao;
     @Autowired
     private IFormerDao formerDao;
-
+    @Autowired
+    private ILearnerDao learnerDao;
 
     private SessionMapper sessionMapper = new SessionMapper();
     private ProgramMapper programMapper = new ProgramMapper();
     private FormerMapper formerMapper = new FormerMapper();
+    private LearnerMapper learnerMapper = new LearnerMapper();
     
     private static final Logger LOGGER = LoggerFactory.getLogger(SessionServiceImpl.class);
 
@@ -142,6 +146,24 @@ public class SessionServiceImpl implements ISessionService
             }
             
         }}
+
+
+    @Override
+    public List<LearnerDto> findLearnersBySession(Long sessionId) {
+        LOGGER.info("session SERVICE findLearnersBySession methode session Vide");
+        SessionDo session = sessionDao.getById(sessionId);
+    
+        List<LearnerDo> learners = learnerDao .findAll();
+        if (session != null) {
+            for (LearnerDo item :learners) {
+               if(item.getLearnerSession().getSessionId() == sessionId) {
+       
+                session.setLearners(learners);}
+            }
+        }  
+      return learnerMapper.mapToListLearnersDto(learners);
+        
+    }
 
 
    
