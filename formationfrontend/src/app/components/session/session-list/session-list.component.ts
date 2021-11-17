@@ -19,13 +19,24 @@ export class SessionListComponent implements OnInit {
   }
 
   constructor(private sessionService: SessionService) {
-    this.sessionService.findAll().subscribe((res: HttpResponse<Session[]>) => {
-      this.sessions = res.body;
-      this.sessionOriginal = this.sessions;
-
-      console.log(this.sessions);
-    });
+    this.getSessions();
   }
 
   ngOnInit(): void {}
+
+  getSessions(): void {
+    this.sessionService.findAll().subscribe((res: HttpResponse<Session[]>) => {
+      this.sessions = res.body;
+      this.sessionOriginal = this.sessions;
+    });
+  }
+
+  delete(id: string): void {
+    this.sessionService.delete(id).subscribe((res: HttpResponse<any>) => {
+      console.log(res.status);
+      if (res.status === 200) {
+        this.getSessions();
+      }
+    });
+  }
 }

@@ -20,7 +20,9 @@
             <img alt="example" src="assets/img/simplon.png" />
         </ng-template>
         <ng-template #actionDelete>
-            <i nz-icon nzType="delete"></i>
+            <a nz-popconfirm nzPopconfirmTitle="Voulez vous vraiment supprimer {{session?.sessionTitle}} ?"
+                nzPopconfirmPlacement="bottom" (nzOnConfirm)="delete(session?.sessionId)"> <i nz-icon
+                    nzType="delete"></i> </a>
         </ng-template>
         <ng-template #actionEdit>
             <a routerLink="/session-edit/{{session?.sessionId}}">
