@@ -3,5 +3,7 @@
     <h2>{{session?.sessionTitle}}</h2>
     <h2>{{session.formerSession.formerName}} {{session.formerSession.formerLastname}}</h2>
     <h2>{{session.programSession.programTitle}}</h2>
-    <h2>{{session.learnersSession}}</h2>
+    <div *ngFor="let learner of session.learnersSession">
+        <h2>{{learner.learnerName}} {{learner.learnerFirstname}}</h2>
+    </div>
 </div>
