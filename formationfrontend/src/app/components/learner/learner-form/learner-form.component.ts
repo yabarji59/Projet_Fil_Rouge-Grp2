@@ -13,6 +13,7 @@ import { LearnerService } from 'src/app/services/Learner.service';
 })
 export class LearnerFormComponent implements OnInit {
   sessions: Session[];
+  learner:Learner[];
   validateForm!: FormGroup;
   editMode = false;
   paramId: string;

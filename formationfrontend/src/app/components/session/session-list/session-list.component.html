@@ -7,31 +7,32 @@
 <h1>Sessions</h1>
 
 <div class="session-container">
-    <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit,actionEllipsis]"
-        *ngFor="let session of sessions">
-        <nz-card-meta nzTitle="#{{session?.sessionId }} {{session?.sessionTitle}}" nzDescription=" {{session.formerSession.formerName}} {{session.formerSession.formerLastname}}
+    <div *ngFor="let session of sessions">
+        <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit,actionEllipsis]">
+            <nz-card-meta nzTitle="#{{session?.sessionId }} {{session?.sessionTitle}}" nzDescription=" {{session.formerSession.formerName}} {{session.formerSession.formerLastname}}
           {{session.programSession.programTitle}} {{session.learnersSession}}" [nzAvatar]="avatarTemplate">
-        </nz-card-meta>
-    </nz-card>
-    <ng-template #avatarTemplate>
-        <nz-avatar nzSrc="assets/img/iconSimplon.jpg"></nz-avatar>
-    </ng-template>
-    <ng-template #coverTemplate>
-        <img alt="example" src="assets/img/simplon.png" />
-    </ng-template>
-    <ng-template #actionDelete>
-        <i nz-icon nzType="delete"></i>
-    </ng-template>
-    <ng-template #actionEdit>
-        <a routerLink="/session-edit/{{session?.sessionId}}">
-            <i nz-icon nzType="edit"></i>
-        </a>
-    </ng-template>
-    <ng-template #actionEllipsis>
-        <a routerLink="/session-detail/{{session?.sessionId}}">
-            <i nz-icon nzType="ellipsis"></i>
-        </a>
-    </ng-template>
+            </nz-card-meta>
+        </nz-card>
+        <ng-template #avatarTemplate>
+            <nz-avatar nzSrc="assets/img/iconSimplon.jpg"></nz-avatar>
+        </ng-template>
+        <ng-template #coverTemplate>
+            <img alt="example" src="assets/img/simplon.png" />
+        </ng-template>
+        <ng-template #actionDelete>
+            <i nz-icon nzType="delete"></i>
+        </ng-template>
+        <ng-template #actionEdit>
+            <a routerLink="/session-edit/{{session?.sessionId}}">
+                <i nz-icon nzType="edit"></i>
+            </a>
+        </ng-template>
+        <ng-template #actionEllipsis>
+            <a routerLink="/session-detail/{{session?.sessionId}}">
+                <i nz-icon nzType="ellipsis"></i>
+            </a>
+        </ng-template>
+    </div>
 </div>
 <button class="button-add" nz-button nzType="primary" nzShape="circle"><i nz-icon nzType="appstore-add"
         nzTheme="outline"><a class="button-add" routerLink="/session-edit"></a></i></button>
