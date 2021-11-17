@@ -18,10 +18,10 @@
 
         <nz-form-item>
             <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un nom valide!">
-                <nz-select formControlName="sessionTitle" nzPlaceHolder="Sessions">
+                <nz-select formControlName="sessionId" nzPlaceHolder="Sessions">
                     <div *ngFor="let session of sessions">
-                        <nz-option nzValue="{{session.sessionId}} {{session.sessionTitle}}"
-                            nzLabel="{{session.sessionId}} {{session.sessionTitle}}"></nz-option>
+                        <nz-option nzValue="{{session.sessionId}}" nzLabel="{{session.sessionId}} 
+                        {{session?.sessionTitle}}"></nz-option>
                     </div>
                 </nz-select>
             </nz-form-control>

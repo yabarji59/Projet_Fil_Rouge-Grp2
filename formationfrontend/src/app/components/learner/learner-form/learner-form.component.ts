@@ -14,7 +14,7 @@ import { SessionService } from 'src/app/services/Session.service';
 })
 export class LearnerFormComponent implements OnInit {
   sessions: Session[];
-  learner:Learner[];
+  learner: Learner[];
   validateForm!: FormGroup;
   editMode = false;
   paramId: string;
@@ -25,6 +25,10 @@ export class LearnerFormComponent implements OnInit {
       if (this.editMode) {
         let learner: Learner = this.validateForm.value;
         learner.learnerId = this.route.snapshot.paramMap.get('id');
+        learner.learnerSession = this.sessions.find(
+          (session) => session.sessionId == this.validateForm.value.sessionId
+        );
+        console.log(learner);
         this.learnerService
           .createOrUpdate(learner)
           .subscribe((res: HttpResponse<Learner>) => {
@@ -75,8 +79,8 @@ export class LearnerFormComponent implements OnInit {
             this.validateForm.controls['learnerFirstname'].setValue(
               learner.learnerFirstname
             );
-            this.validateForm.controls['sessionTitle'].setValue(
-              learner.learnerSession.sessionTitle
+            this.validateForm.controls['sessionId'].setValue(
+              learner?.learnerSession?.sessionId
             );
           }
         });
@@ -91,7 +95,7 @@ export class LearnerFormComponent implements OnInit {
     this.validateForm = this.fb.group({
       learnerName: [null, [Validators.required]],
       learnerFirstname: [null, [Validators.required]],
-      sessionTitle: [null, [Validators.required]],
+      sessionId: [null, [Validators.required]],
     });
   }
 }

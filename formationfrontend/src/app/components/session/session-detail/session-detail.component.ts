@@ -9,37 +9,30 @@ import { SessionService } from 'src/app/services/Session.service';
 @Component({
   selector: 'app-session-detail',
   templateUrl: './session-detail.component.html',
-  styleUrls: ['./session-detail.component.css']
+  styleUrls: ['./session-detail.component.css'],
 })
 export class SessionDetailComponent implements OnInit {
   paramId: string;
   session: Session;
   learners: Learner[];
 
-    
   constructor(
     private learnerService: LearnerService,
     private sessionService: SessionService,
     private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute
+  ) {
     console.log(this.route.snapshot.paramMap.get('id'));
     this.paramId = this.route.snapshot.paramMap.get('id');
     if (this.paramId != null) {
       this.sessionService
-        .find(this.paramId).subscribe((res: HttpResponse<Session>) => {
+        .find(this.paramId)
+        .subscribe((res: HttpResponse<Session>) => {
           this.session = res.body;
-          
-        });
-        console.log();
-        this.sessionService
-        .findLearners(this.paramId).subscribe((res: HttpResponse<Learner[]>) => {
-          
-          this.session.learnersSession =res.body;
+          console.log(this.session);
         });
     }
-   }
-
-  ngOnInit(): void {
   }
 
+  ngOnInit(): void {}
 }
