@@ -1,26 +1,30 @@
-<h1>Sessions</h1>
+<h1>{{ editMode ? 'Editer un ' : 'Ajouter un '}}Session</h1>
 <div class="gestion-formation-form-container">
     <form nz-form [formGroup]="validateForm" class="gestion-formation-form">
         <nz-form-item>
             <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un nom valide!">
                 <nz-input-group>
-                    <input type="text" nz-input formControlName="name" placeholder="Nom" />
+                    <input type="text" nz-input formControlName="sessionTitle" placeholder="Nom" />
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
             <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un nom valide!">
-                <nz-select formControlName="former" nzPlaceHolder="Formateurs">
-                    <nz-option nzValue="Yassen" nzLabel="Yassen"></nz-option>
-                    <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+                <nz-select formControlName="formerName" nzPlaceHolder="Formateurs">
+                    <div *ngFor="let former of formers">
+                    <nz-option nzValue="{{former.formerId}} {{former.formerName}}"
+                    nzLabel="{{former.formerId}} {{former.formerName}}"></nz-option>
+                </div>
                 </nz-select>
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
             <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un nom valide!">
-                <nz-select formControlName="program" nzPlaceHolder="Programmes">
-                    <nz-option nzValue="Java" nzLabel="Java"></nz-option>
-                    <nz-option nzValue="Angular" nzLabel="Angular"></nz-option>
+                <nz-select formControlName="programTitle" nzPlaceHolder="Programmes">
+                    <div *ngFor="let program of programs">
+                    <nz-option nzValue="{{program.programId}} {{program.programTitle}}"
+                    nzLabel="{{program.programId}} {{program.programTitle}}"></nz-option>
+                </div>
                 </nz-select>
             </nz-form-control>
         </nz-form-item>

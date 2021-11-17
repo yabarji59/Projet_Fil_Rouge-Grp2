@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Learner } from 'src/app/model/Learner.model';
 import { Session } from 'src/app/model/Session.model';
 import { LearnerService } from 'src/app/services/Learner.service';
+import { SessionService } from 'src/app/services/Session.service';
 
 @Component({
   selector: 'app-learner-form',
@@ -53,9 +54,12 @@ export class LearnerFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private learnerService: LearnerService,
+    private sessionService: SessionService,
     private router: Router,
     private route: ActivatedRoute
   ) {
+    this.getSessions();
+
     console.log(this.route.snapshot.paramMap.get('id'));
     this.paramId = this.route.snapshot.paramMap.get('id');
     if (this.paramId != null) {
@@ -74,12 +78,15 @@ export class LearnerFormComponent implements OnInit {
             this.validateForm.controls['sessionTitle'].setValue(
               learner.learnerSession.sessionTitle
             );
-            console.log(learner.learnerSession.sessionTitle);
           }
         });
     }
   }
-
+  getSessions(): void {
+    this.sessionService.findAll().subscribe((res: HttpResponse<Session[]>) => {
+      this.sessions = res.body;
+    });
+  }
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       learnerName: [null, [Validators.required]],
