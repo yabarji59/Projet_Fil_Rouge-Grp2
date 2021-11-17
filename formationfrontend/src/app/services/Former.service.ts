@@ -10,6 +10,7 @@ type EntityArrayResponseType = HttpResponse<Former[]>;
   providedIn: 'root',
 })
 export class FormerService {
+ 
   public resourceUrl = `http://localhost:8080/api/formers`;
 
   constructor(private http: HttpClient) {}
@@ -28,6 +29,12 @@ export class FormerService {
         observe: 'response',
       }
     );
+  }
+
+  find(id: string): Observable<EntityResponseType> {
+    return this.http.get<Former>(`${this.resourceUrl}/${id}`, {
+      observe: 'response',
+    });
   }
 
   findAll(): Observable<EntityArrayResponseType> {

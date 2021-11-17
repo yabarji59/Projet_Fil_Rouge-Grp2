@@ -6,26 +6,29 @@
 </ng-template>
 <h1>Formateurs</h1>
 <div class="former-container">
-    <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit]"
-        *ngFor="let former of formers">
-        <nz-card-meta nzTitle="#{{former?.formerId }} {{former.formerName}} {{former.formerLastname}}"
-            nzDescription="{{former.formerSession}}" [nzAvatar]="avatarTemplate">
-        </nz-card-meta>
-    </nz-card>
-    <ng-template #avatarTemplate>
-        <nz-avatar nzIcon="user" style="background-color:#87d068;"></nz-avatar>
-    </ng-template>
-    <ng-template #coverTemplate>
-        <img alt="example" src="assets/img/formateur.jpg" style="width: 100%;" />
-    </ng-template>
-    <ng-template #actionDelete>
-        <i nz-icon nzType="delete"></i>
-    </ng-template>
-    <ng-template #actionEdit>
-        <a routerLink="/former-edit/{{former?.formerId}}">
-            <i nz-icon nzType="edit"></i>
-        </a>
-    </ng-template>
+    <div *ngFor="let former of formers">
+        <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionDelete, actionEdit]">
+            <nz-card-meta nzTitle="#{{former?.formerId }} {{former.formerName}} {{former.formerLastname}}"
+                nzDescription="{{former.formerSession}}" [nzAvatar]="avatarTemplate">
+            </nz-card-meta>
+        </nz-card>
+        <ng-template #avatarTemplate>
+            <nz-avatar nzIcon="user" style="background-color:#87d068;"></nz-avatar>
+        </ng-template>
+        <ng-template #coverTemplate>
+            <img alt="example" src="assets/img/formateur.jpg" style="width: 100%;" />
+        </ng-template>
+        <ng-template #actionDelete>
+            <a nz-popconfirm nzPopconfirmTitle="Voulez vous vraiment supprimer {{former?.formerName}} {{former?.formerLastname}} ?"
+                nzPopconfirmPlacement="bottom" (nzOnConfirm)="delete(former?.formerId )"> <i nz-icon
+                    nzType="delete"></i> </a>
+        </ng-template>
+        <ng-template #actionEdit>
+            <a routerLink="/former-edit/{{former?.formerId}}">
+                <i nz-icon nzType="edit"></i>
+            </a>
+        </ng-template>
+    </div>
 </div>
 <button class="button-add" nz-button nzType="primary" nzShape="circle"><i nz-icon nzType="appstore-add"
         nzTheme="outline"><a class="button-add" routerLink="/former-edit"></a></i></button>

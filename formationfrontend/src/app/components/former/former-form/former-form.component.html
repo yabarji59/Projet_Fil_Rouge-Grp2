@@ -1,17 +1,17 @@
-<h1>Formateurs</h1>
+<h1>{{ editMode ? 'Editer un ' : 'Ajouter un '}}Formateur</h1>
 <div class="gestion-formation-form-container">
     <form nz-form [formGroup]="validateForm" class="gestion-formation-form">
         <nz-form-item>
             <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un nom valide!">
                 <nz-input-group>
-                    <input type="text" nz-input formControlName="surname" placeholder="Nom" />
+                    <input type="text" nz-input formControlName="formerLastname" placeholder="Nom" />
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
             <nz-form-control nzErrorTip="S'il vous plait veuillez entrer un Prénom valide!">
                 <nz-input-group>
-                    <input type="text" nz-input formControlName="name" placeholder="Prénom" />
+                    <input type="text" nz-input formControlName="formerName" placeholder="Prénom" />
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>

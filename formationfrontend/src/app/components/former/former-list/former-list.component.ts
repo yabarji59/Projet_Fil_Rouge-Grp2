@@ -19,11 +19,24 @@ export class FormerListComponent implements OnInit {
     );
   }
   constructor(private formerService: FormerService) {
+    this.getFormers();
+  }
+
+  ngOnInit(): void {}
+
+  getFormers(): void {
     this.formerService.findAll().subscribe((res: HttpResponse<Former[]>) => {
       this.formers = res.body;
       this.formersOriginal = this.formers;
-      console.log(this.formers);
     });
   }
-  ngOnInit(): void {}
+
+  delete(id: string): void {
+    this.formerService.delete(id).subscribe((res: HttpResponse<any>) => {
+      console.log(res.status);
+      if (res.status === 200) {
+        this.getFormers();
+      }
+    });
+  }
 }
