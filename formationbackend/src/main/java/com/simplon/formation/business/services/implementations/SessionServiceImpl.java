@@ -9,7 +9,6 @@ import com.simplon.formation.business.utils.mappers.FormerMapper;
 import com.simplon.formation.business.utils.mappers.ProgramMapper;
 import com.simplon.formation.business.utils.mappers.SessionMapper;
 import com.simplon.formation.persistance.dao.IFormerDao;
-import com.simplon.formation.persistance.dao.ILearnerDao;
 import com.simplon.formation.persistance.dao.IProgramDao;
 import com.simplon.formation.persistance.dao.ISessionDao;
 import com.simplon.formation.persistance.entities.*;
