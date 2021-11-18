@@ -28,6 +28,11 @@ export class SessionFormComponent implements OnInit {
       if (this.editMode) {
         let session: Session = this.validateForm.value;
         session.sessionId = this.route.snapshot.paramMap.get('id');
+        session.formerSession = this.formers.find(
+          (former) => former.formerId == this.validateForm.value.formerId);
+          session.programSession = this.programs.find(
+            (program) => program.programId == this.validateForm.value.programId);
+            console.log(session);
         this.sessionService
           .update(session)
           .subscribe((res: HttpResponse<Session>) => {
@@ -76,11 +81,11 @@ export class SessionFormComponent implements OnInit {
             this.validateForm.controls['sessionTitle'].setValue(
               session.sessionTitle
             );
-            this.validateForm.controls['formerName'].setValue(
-              session.programSession.programTitle
+            this.validateForm.controls['formerId'].setValue(
+              session?.formerSession?.formerId
             );
-            this.validateForm.controls['programTitle'].setValue(
-              session.programSession.programTitle
+            this.validateForm.controls['programId'].setValue(
+              session?.programSession?.programId
             );
           }
         });
@@ -100,8 +105,8 @@ export class SessionFormComponent implements OnInit {
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       sessionTitle: [null, [Validators.required]],
-      formerName: [null, [Validators.required]],
-      programTitle: [null, [Validators.required]],
+      formerId: [null, [Validators.required]],
+      programId: [null, [Validators.required]],
     });
   }
 }
