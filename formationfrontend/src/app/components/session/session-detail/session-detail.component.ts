@@ -34,7 +34,9 @@ export class SessionDetailComponent implements OnInit {
         this.sessionService
         .findLearners(this.paramId).subscribe((res: HttpResponse<Learner[]>) => {
           
-          this.session.learnersSession =res.body;
+          this.learners =res.body;
+          console.log(this.learners);
+
         });
     }
    }

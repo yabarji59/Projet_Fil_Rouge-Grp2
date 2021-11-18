@@ -5,3 +5,10 @@
     <h2>{{session.programSession.programTitle}}</h2>
     <h2>{{session.learnersSession}}</h2>
 </div>
+<h1>Learners</h1>
+<div *ngFor="let learner of learners" class="detail-container">
+    <h2>{{learner?.learnerId}}</h2>
+    <h2>{{learner?.learnerFirstname}}</h2>
+    <h2>{{learner?.learnerName}} </h2>
+
+</div>

@@ -13,7 +13,7 @@ public class SessionDto {
     private String SessionTitle;
     private ProgramDto ProgramSession;
     private FormerDto FormerSession;
-    private List<LearnerDto> LearnersSession;
+   
 
 
     public SessionDto() {
@@ -24,7 +24,7 @@ public class SessionDto {
         this.SessionTitle = SessionTitle;
         this.ProgramSession = ProgramSession;
         this.FormerSession = FormerSession;
-        this.LearnersSession = LearnersSession;
+        
     }
 
     public Long getSessionId() {
@@ -59,13 +59,7 @@ public class SessionDto {
         this.FormerSession = FormerSession;
     }
 
-    public List<LearnerDto> getLearnersSession() {
-        return this.LearnersSession;
-    }
-
-    public void setLearnersSession(List<LearnerDto> LearnersSession) {
-        this.LearnersSession = LearnersSession;
-    }
+   
 
     public SessionDto SessionId(Long SessionId) {
         setSessionId(SessionId);
@@ -87,9 +81,11 @@ public class SessionDto {
         return this;
     }
 
-    public SessionDto LearnersSession(List<LearnerDto> LearnersSession) {
-        setLearnersSession(LearnersSession);
-        return this;
+    public SessionDto(Long SessionId, String SessionTitle, ProgramDto ProgramSession, FormerDto FormerSession) {
+        this.SessionId = SessionId;
+        this.SessionTitle = SessionTitle;
+        this.ProgramSession = ProgramSession;
+        this.FormerSession = FormerSession;
     }
 
     @Override
@@ -100,12 +96,12 @@ public class SessionDto {
             return false;
         }
         SessionDto sessionDto = (SessionDto) o;
-        return Objects.equals(SessionId, sessionDto.SessionId) && Objects.equals(SessionTitle, sessionDto.SessionTitle) && Objects.equals(ProgramSession, sessionDto.ProgramSession) && Objects.equals(FormerSession, sessionDto.FormerSession) && Objects.equals(LearnersSession, sessionDto.LearnersSession);
+        return Objects.equals(SessionId, sessionDto.SessionId) && Objects.equals(SessionTitle, sessionDto.SessionTitle) && Objects.equals(ProgramSession, sessionDto.ProgramSession) && Objects.equals(FormerSession, sessionDto.FormerSession);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(SessionId, SessionTitle, ProgramSession, FormerSession, LearnersSession);
+        return Objects.hash(SessionId, SessionTitle, ProgramSession, FormerSession);
     }
 
     @Override
@@ -115,8 +111,9 @@ public class SessionDto {
             ", SessionTitle='" + getSessionTitle() + "'" +
             ", ProgramSession='" + getProgramSession() + "'" +
             ", FormerSession='" + getFormerSession() + "'" +
-            ", LearnersSession='" + getLearnersSession() + "'" +
             "}";
     }
+
+  
 
 }
