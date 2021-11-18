@@ -1,9 +1,14 @@
 <h1>Sessions</h1>
 <div class="detail-container">
     <h2>{{session?.sessionTitle}}</h2>
-    <h2>{{session?.formerSession?.formerName}} {{session?.formerSession?.formerLastname}}</h2>
-    <h2>{{session?.programSession?.programTitle}}</h2>
-    <div *ngFor="let learner of session?.learnersSession">
-        <h2>{{learner?.learnerName}} {{learner?.learnerFirstname}}</h2>
-    </div>
+    <h2>{{session.formerSession.formerName}} {{session.formerSession.formerLastname}}</h2>
+    <h2>{{session.programSession.programTitle}}</h2>
+    <h2>{{session.learnersSession}}</h2>
+</div>
+<h1>Learners</h1>
+<div *ngFor="let learner of learners" class="detail-container">
+    <h2>{{learner?.learnerId}}</h2>
+    <h2>{{learner?.learnerFirstname}}</h2>
+    <h2>{{learner?.learnerName}} </h2>
+
 </div>
