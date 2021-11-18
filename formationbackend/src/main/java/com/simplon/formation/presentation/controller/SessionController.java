@@ -1,7 +1,9 @@
 package com.simplon.formation.presentation.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.simplon.formation.business.services.interfaces.ILearnerService;
 import com.simplon.formation.business.services.interfaces.ISessionService;
 import com.simplon.formation.presentation.model.LearnerDto;
 import com.simplon.formation.presentation.model.SessionDto;
@@ -26,6 +28,8 @@ public class SessionController {
     
     @Autowired
     ISessionService sessionService;
+    @Autowired
+    ILearnerService learnerService;
 
 /**
  * Postman link : GET api/programs
@@ -40,18 +44,7 @@ public class SessionController {
 		return sessionService.findSessionByTitle(title);}
 
 
-/**
- * get learners of sessions
- * @param id
- * @return
- */
-        @GetMapping({ "/sessions/learners/{id}" })
-        public List<LearnerDto> getLearners(@PathVariable Long id) {
-           
-                return sessionService.findLearnersBySession(id);
-            
-            }
-    
+
 /**
  * 
  * @param id
@@ -63,6 +56,17 @@ public class SessionController {
             return sessionDto;
         }
 
+        @GetMapping({ "/sessions/learners/{id}" })
+        public List<LearnerDto> getLearners(@PathVariable Long id) {
+            List<LearnerDto> listFinal= new ArrayList<>();
+            List<LearnerDto> learners = learnerService.getAllLearners();
+             for(LearnerDto item :learners) {
+                 System.out.println(item.getLearnerSession().getSessionId());
+                   if(item.getLearnerSession().getSessionId()==id) {
+                    listFinal.add(item);
+                   
+               }
+            } return listFinal;}
 
 
 
