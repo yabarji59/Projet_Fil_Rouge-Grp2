@@ -29,9 +29,9 @@ export class SessionFormComponent implements OnInit {
         let session: Session = this.validateForm.value;
         session.sessionId = this.route.snapshot.paramMap.get('id');
         session.formerSession = this.formers.find(
-          (former) => former.formerId == this.validateForm.value.formerId);
+          (session) => session.formerId == this.validateForm.value.sessionId);
           session.programSession = this.programs.find(
-            (program) => program.programId == this.validateForm.value.programId);
+            (session) => session.programId == this.validateForm.value.sessionId);
             console.log(session);
         this.sessionService
           .update(session)
