@@ -21,30 +21,20 @@ export class LearnerFormComponent implements OnInit {
 
   submitForm(): void {
     if (this.validateForm.valid) {
+      let learner: Learner = this.validateForm.value;
+      learner.learnerId = this.paramId;
+      learner.learnerSession = this.sessions.find(
+        (session) => session.sessionId == this.validateForm.value.sessionId
+      );
       console.log('form valid');
-      if (this.editMode) {
-        let learner: Learner = this.validateForm.value;
-        learner.learnerId = this.route.snapshot.paramMap.get('id');
-        learner.learnerSession = this.sessions.find(
-          (session) => session.sessionId == this.validateForm.value.sessionId
-        );
-        console.log(learner);
-        this.learnerService
-          .createOrUpdate(learner)
-          .subscribe((res: HttpResponse<Learner>) => {
-            if (res.status === 200) {
-              this.router.navigate(['/learner']);
-            }
-          });
-      } else {
-        this.learnerService
-          .createOrUpdate(this.validateForm.value)
-          .subscribe((res: HttpResponse<Learner>) => {
-            if (res.status === 200) {
-              this.router.navigate(['/learner']);
-            }
-          });
-      }
+      console.log(learner);
+      this.learnerService
+        .createOrUpdate(learner)
+        .subscribe((res: HttpResponse<Learner>) => {
+          if (res.status === 200) {
+            this.router.navigate(['/learner']);
+          }
+        });
     } else {
       Object.values(this.validateForm.controls).forEach((control) => {
         if (control.invalid) {

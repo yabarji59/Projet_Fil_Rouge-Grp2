@@ -24,28 +24,48 @@ export class SessionFormComponent implements OnInit {
 
   submitForm(): void {
     if (this.validateForm.valid) {
-      console.log('form valid');
-      if (this.editMode) {
-        let session: Session = this.validateForm.value;
-        session.sessionId = this.route.snapshot.paramMap.get('id');
-        session.formerSession = this.formers.find(
-          (session) => session.formerId == this.validateForm.value.sessionId);
-          session.programSession = this.programs.find(
-            (session) => session.programId == this.validateForm.value.sessionId);
-            console.log(session);
-        this.sessionService
-          .update(session)
+      console.log(this.validateForm.value);
+      let session: Session = {
+        formerSession: null,
+        programSession: null,
+        sessionTitle: this.validateForm.value.sessionTitle,
+      };
+      if (this.validateForm.value.formerId) {
+        this.formerService
+          .find(this.validateForm.value.formerId)
           .subscribe((res: HttpResponse<Session>) => {
             if (res.status === 200) {
-              this.router.navigate(['/session']);
-            }
-          });
-      } else {
-        this.sessionService
-          .create(this.validateForm.value)
-          .subscribe((res: HttpResponse<Session>) => {
-            if (res.status === 200) {
-              this.router.navigate(['/session']);
+              session.formerSession = res.body;
+              if (this.validateForm.value.programId) {
+                this.programService
+                  .find(this.validateForm.value.programId)
+                  .subscribe((res: HttpResponse<Session>) => {
+                    if (res.status === 200) {
+                      session.programSession = res.body;
+                      console.log(session);
+
+                      if (this.editMode) {
+                        console.log(session);
+                        session.sessionId = this.paramId;
+                        this.sessionService
+                          .update(session)
+                          .subscribe((res: HttpResponse<Session>) => {
+                            if (res.status === 200) {
+                              this.router.navigate(['/session']);
+                            }
+                          });
+                      } else {
+                        this.sessionService
+                          .create(session)
+                          .subscribe((res: HttpResponse<Session>) => {
+                            if (res.status === 200) {
+                              this.router.navigate(['/session']);
+                            }
+                          });
+                      }
+                    }
+                  });
+              }
             }
           });
       }
