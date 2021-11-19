@@ -6,11 +6,11 @@
     </div>
     <div class="login-form-container">
         <h2>Authentication</h2>
-        <form nz-form [formGroup]="validateForm" class="login-form">
+        <form nz-form [formGroup]="loginForm" class="login-form" (ngSubmit)="onSubmit()">
             <nz-form-item>
                 <nz-form-control nzErrorTip="S'il vous plaît entrer un nom valide !">
                     <nz-input-group nzPrefixIcon="user">
-                        <input type="text" nz-input formControlName="userName" placeholder="Username" />
+                        <input type="text" nz-input  formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
                     </nz-input-group>
                 </nz-form-control>
             </nz-form-item>
@@ -21,10 +21,11 @@
                     </nz-input-group>
                 </nz-form-control>
             </nz-form-item>
-        </form>
-        <div class="login-button-submit">
+       
+        <div  class="login-button-submit">
             <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'"
-                (click)="submitForm()">Connexion</button>
+                >Connexion</button>
         </div>
+    </form>
     </div>
 </div>

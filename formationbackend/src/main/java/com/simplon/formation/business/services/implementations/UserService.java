@@ -5,10 +5,9 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
@@ -32,6 +31,11 @@ public class UserService {
         return userRepository.findByUsername(username).orElseThrow(EntityNotFoundException::new);
     }
 
+
+    public List<ApiUser> getalls() {
+        return userRepository.findAll();
+    }
+
     public void createUser(UserCreateRequest userCreateRequest) {
         ApiUser user = new ApiUser();
         Optional<ApiUser> byUsername = userRepository.findByUsername(userCreateRequest.getUsername());
@@ -42,6 +46,8 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(userCreateRequest.getPassword()));
         userRepository.save(user);
     }
+
+
 
    
 }
